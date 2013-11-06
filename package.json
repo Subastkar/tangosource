@@ -1,0 +1,19 @@
+{
+  "name": "nko4-tangosource",
+  "version": "0.0.0",
+  "description": "TangoSource",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko4/tangosource.git"
+  },
+  "dependencies": {
+    "nko": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
