@@ -10,7 +10,20 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
+var inspect = require('eyes').inspector({stream: null});
 
+global._   = require('underscore');
+global.log = function(){
+  var args = Array.prototype.slice.call(arguments);
+  args[args.length - 1] = inspect(args[args.length - 1]);
+  console.log.bind(console).apply(console, args);
+};
+
+require('./libs/database')(function(error){
+  if(error){ throw new Error(error); }
+  log('Database connected');
+});
+    
 // all environments
 app.set('port', port);
 app.set('views', __dirname + '/views');
