@@ -10,7 +10,7 @@ var Room   = mongoose.model('room', roomSchema);
 var Player = mongoose.model('player', playerSchema);
 
 var onError = function(err){
-  log(err)
+  log(err);
 };
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
       var data = { roomID: room._id, level: room.level };
 
       if(!currentRoom){
-        data.player = "ZombieController"
+        data.player = "ZombieController";
       }else{
         _.extend(data, config['level' + room.level].position1);
       }
@@ -53,7 +53,6 @@ module.exports = {
             _.extend(user, _.pick(playerConf, 'speed', 'gun'));
           }
 
-          console.log('id', userUpdated.id);
            room.players.push(user || userUpdated);
            room.save(onError);
 
@@ -65,4 +64,4 @@ module.exports = {
     });
 
   }
-}
+};

@@ -21,7 +21,7 @@ ZombieWorld.Controller.socketController = {
     if(ZombieWorld.Players[player.id]){ return false; }
 
     //Insert player into local room
-    ZombieWorld.room.players[player.id] = player;
+    ZombieWorld.room.players.push(player);
     localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
 
     //Build Entity
