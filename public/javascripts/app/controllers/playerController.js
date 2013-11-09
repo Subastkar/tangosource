@@ -50,7 +50,11 @@ ZombieWorld.Controller.playerController = {
         } else if(this.isDown("DOWN_ARROW")) {
           this.emit('move', { to: "DOWN_ARROW",  player: player.id, x: this.x, y: this.y});
         }
-      });
+    }).onHit('Obstacle', function(){
+      this.x -= this._movement.x;
+      this.y -= this._movement.y;
+    });
+      
     
     ZombieWorld.currentPlayer.Entity = Entity;
 
