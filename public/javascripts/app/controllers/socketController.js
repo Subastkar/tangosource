@@ -1,7 +1,8 @@
 ZombieWorld.Controller.socketController = {
 
   events: { 
-    'new player' : 'insertPlayer'
+    'new player' : 'insertPlayer',
+    'move'       : 'move'
   },
 
   init: function(){
@@ -23,10 +24,16 @@ ZombieWorld.Controller.socketController = {
     ZombieWorld.room.players[player.id] = player;
     localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
 
+    //Build Entity
     player.Entity = new ZombieWorld.Entities.player(player);
 
+    //Extend Players
     ZombieWorld.Players[player.id] = player;
 
+  },
+
+  move: function(data){
+    console.log(data);
   }
 
 };

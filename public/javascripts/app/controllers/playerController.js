@@ -38,10 +38,20 @@ ZombieWorld.Controller.playerController = {
       } else if (data.y < 0) {
         this.animate('walk_up',    20, -1);
       } else {
-          this.stop();
+        this.stop();
+      }
+    }).bind("EnterFrame", function(e) {
+        if(this.isDown("LEFT_ARROW")) {
+          this.emit('move', { to: "LEFT_ARROW",  player: player.id, x: this.x, y: this.y});
+        } else if(this.isDown("RIGHT_ARROW")) {
+          this.emit('move', { to: "RIGHT_ARROW", player: player.id, x: this.x, y: this.y});
+        } else if(this.isDown("UP_ARROW")) {
+          this.emit('move', { to: "UP_ARROW",    player: player.id, x: this.x, y: this.y});
+        } else if(this.isDown("DOWN_ARROW")) {
+          this.emit('move', { to: "DOWN_ARROW",  player: player.id, x: this.x, y: this.y});
         }
       });
-
+    
     ZombieWorld.currentPlayer.Entity = Entity;
 
   },
@@ -57,7 +67,12 @@ ZombieWorld.Controller.playerController = {
         return this.isMyPlayer();
       }
 
-      console.log('Build Entity for: ', player);
+      //Build Entity
+      player.Entity = new ZombieWorld.Entities.player(player);
+
+      //Extend Players
+      ZombieWorld.Players[player.id] = player;
+      
       
     }, this);
 
