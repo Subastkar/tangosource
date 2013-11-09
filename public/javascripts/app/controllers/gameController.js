@@ -54,6 +54,15 @@ ZombieWorld.Controller.gameController = {
           case 1:
             Crafty.e('Obstacle').attr(attrs);
             break;
+          case 2:
+            Crafty.e('Exit1').attr(attrs);
+            break;
+          case 3:
+            Crafty.e('Exit2').attr(attrs);
+            break;
+          case 4:
+            Crafty.e('Exit3').attr(attrs);
+            break;
         }
       });
     });
