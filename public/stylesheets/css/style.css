@@ -146,7 +146,8 @@ a {
   box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
   background: #a2a18e url("../../images/info-bg.jpg") no-repeat;
   background-size: 100% 100%;
-  width: 100%;
+  width: auto;
+  min-width: 100%;
   margin: 425px 0 -30px;
   min-height: 400px;
   padding: 40px;
@@ -157,7 +158,7 @@ a {
   max-height: 360px;
   white-space: nowrap;
 }
-/* line 75, ../sass/style.sass */
+/* line 76, ../sass/style.sass */
 #intro-landing .btn {
   margin-top: 40px;
   -webkit-border-radius: 0px;
@@ -166,45 +167,49 @@ a {
   -o-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 78, ../sass/style.sass */
+/* line 79, ../sass/style.sass */
 #intro-landing .rpg-button {
   background: #463627;
   border: 2px solid #231c15;
   box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
   padding: 12px 25px;
 }
-/* line 83, ../sass/style.sass */
+/* line 84, ../sass/style.sass */
 #intro-landing .rpg-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 85, ../sass/style.sass */
+/* line 86, ../sass/style.sass */
 #intro-landing .container-controls {
   overflow: hidden;
   float: right;
 }
-/* line 89, ../sass/style.sass */
+/* line 90, ../sass/style.sass */
 #intro-landing .container-controls .rpg-button.prev, #intro-landing .container-controls .rpg-button.next {
   padding: 0px 20px;
 }
-/* line 91, ../sass/style.sass */
+/* line 92, ../sass/style.sass */
+#intro-landing .step {
+  margin-right: 80px;
+}
+/* line 94, ../sass/style.sass */
 #intro-landing .step1 {
   display: inline-block;
   width: 100%;
 }
-/* line 94, ../sass/style.sass */
+/* line 97, ../sass/style.sass */
 #intro-landing .step2 {
   display: inline-block;
   width: 100%;
 }
 
-/* line 99, ../sass/style.sass */
+/* line 102, ../sass/style.sass */
 #intro-landing .blood {
   background: #463627 url("../../images/blood-btn.png") no-repeat;
   box-shadow: inset -2px 0px 1px #655b52, inset 2px -2px 1px #36281b;
 }
 
-/* line 103, ../sass/style.sass */
+/* line 106, ../sass/style.sass */
 .next, .prev {
   float: right;
   background: #bcb99e;
@@ -216,14 +221,14 @@ a {
   cursor: pointer;
 }
 
-/* line 113, ../sass/style.sass */
+/* line 116, ../sass/style.sass */
 .prev {
   float: left;
   line-height: 49px;
   padding-left: 1px;
 }
 
-/* line 119, ../sass/style.sass */
+/* line 122, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;
