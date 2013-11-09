@@ -19,7 +19,7 @@ ZombieWorld.Controller.gameController = {
       var generateLevel = function(){
         $.getJSON('/configuration?q=level'+ZombieWorld.Level, function(levelConfig){
           ZombieWorld.LevelConfig = levelConfig;
-          self.buildGrid(ZombieWorld.LevelConfig);
+          self.buildGrid(ZombieWorld.LevelConfig.grid);
         });
       };
 
@@ -40,6 +40,30 @@ ZombieWorld.Controller.gameController = {
   buildGrid: function(grid){
     _.each(grid, function(x, xIndex){
       _.each(x, function(y, yIndex){
+        var attrs = {
+          w: ZombieWorld.Map.tile.width,
+          h: ZombieWorld.Map.tile.height,
+          x: xIndex * ZombieWorld.Map.tile.width,
+          y: yIndex * ZombieWorld.Map.tile.height
+        };
+
+        switch(grid[xIndex][yIndex]){
+          case 0:
+            Crafty.e('Free').attr(attrs);
+            break;
+          case 1:
+            Crafty.e('Obstacle').attr(attrs);
+            break;
+          case 2:
+            Crafty.e('Exit1').attr(attrs);
+            break;
+          case 3:
+            Crafty.e('Exit2').attr(attrs);
+            break;
+          case 4:
+            Crafty.e('Exit3').attr(attrs);
+            break;
+        }
       });
     });
   }

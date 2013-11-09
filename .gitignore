@@ -3,3 +3,4 @@ i*.DS_Store
 npm-debug.log
 .DS_Store
 public/stylesheets/.sass-cache/*
+config/database.json
