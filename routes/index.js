@@ -4,6 +4,7 @@ var configController  = require('../controllers/configController');
 module.exports = function(app){
 
   app.get('/', htmlController.index.bind(htmlController));
+  app.get('/login', htmlController.login.bind(htmlController));
   app.get('/game', htmlController.game.bind(htmlController));
 
   //Get configs from the server

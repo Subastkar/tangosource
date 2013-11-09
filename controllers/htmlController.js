@@ -6,6 +6,9 @@ module.exports = {
 
   game: function(req, res){
     res.render('pages/game');
-  }
+  },
 
+  login: function(req, res){
+    res.render('pages/login');
+  }
 };
