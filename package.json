@@ -17,6 +17,10 @@
   "dependencies": {
     "nko": "*",
     "express": "3.1.2",
+    "underscore": "1.5.2",
+    "socket.io": "0.9.16",
+    "eyes": "0.1.8",
+    "mongoose": "3.6.20",
     "jade": "*"
   }
 }
