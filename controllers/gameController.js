@@ -35,7 +35,12 @@ module.exports = {
       room.players.push(newUser._id);
       room.save(onError);
 
-      var data = config['level' + room.level].position1;
+      //TODO: create zombies!
+      
+      var data = _.extend(config['level' + room.level].position1,{
+        roomID: room._id,
+        level: room.level
+      })
 
       User.findOneAndUpdate({_id: newUser.id}, data, function(err, userUpdated){
 
@@ -43,12 +48,10 @@ module.exports = {
         Player.findOne({name: user.type }, function(err, playerConf){
           if(err){ res.send(400, err); }
 
-          var response = {
-            user: userUpdated,
-            conf: playerConf,
-            room: room
-          }
-          res.send(response);
+           var user = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
+           _.extend(user, _.pick(playerConf, 'speed', 'gun'));
+
+          res.send({user: user, room: room});
         });
 
       });
