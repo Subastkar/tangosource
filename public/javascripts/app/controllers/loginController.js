@@ -18,7 +18,7 @@ $(function(){
         window.location.assign('/game');
       });
     }else{
-      console.log('Please enter a username and pick a player');
+      alert('Please enter a username and pick a player');
     }
   });
 });
