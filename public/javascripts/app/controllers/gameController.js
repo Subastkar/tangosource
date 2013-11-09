@@ -30,8 +30,10 @@ ZombieWorld.Controller.gameController = {
 
       //TODO Link player with currentPlayer
       ZombieWorld.Controller.playerController.init();
-
       ZombieWorld.Controller.zombieController.init();
+
+      //Create zombies 
+      ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
 
     });
 
