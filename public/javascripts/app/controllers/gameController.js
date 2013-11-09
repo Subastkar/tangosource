@@ -14,7 +14,6 @@ ZombieWorld.Controller.gameController = {
       var height = ZombieWorld.Map.height * ZombieWorld.Map.tile.height;
 
       Crafty.init(width, height, 'game-area');
-      Crafty.background('rgb(56,208,135)');
 
       var generateLevel = function(){
         $.getJSON('/configuration?q=level'+ZombieWorld.Level, function(levelConfig){
@@ -38,6 +37,8 @@ ZombieWorld.Controller.gameController = {
   },
 
   buildGrid: function(grid){
+    Crafty.background("url('/images/level"+ZombieWorld.Level+".png')");
+
     _.each(grid, function(x, xIndex){
       _.each(x, function(y, yIndex){
         var attrs = {

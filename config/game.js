@@ -10,8 +10,8 @@ module.exports = {
 
   level1: {
     grid: require('../grids/room1'),
-    position1: {x : 200, y: 200},
-    position2: {x : 300, y: 300},
-    position3: {x : 400, y: 400}
+    position1: {x : 740, y: 460},
+    position2: {x : 920, y: 420},
+    position3: {x : 900, y: 140}
   }
 };

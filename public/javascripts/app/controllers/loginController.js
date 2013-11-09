@@ -1,4 +1,5 @@
 $(function(){
+  localStorage.clear();
   $('#loginForm').submit(function(event){
     event.preventDefault();
     var user = {
@@ -12,10 +13,12 @@ $(function(){
         url: 'user/create',
         data: user
       }).done(function(res){
+        localStorage.setItem('user', JSON.stringify(res.user));
+        localStorage.setItem('room', JSON.stringify(res.room));
         window.location.assign('/game');
       });
     }else{
-      console.log('Please enter a username and pick a player');
+      alert('Please enter a username and pick a player');
     }
   });
 });
