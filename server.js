@@ -42,6 +42,14 @@ if('development' === app.get('env')){
 
 require('./routes')(app);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+var io = require('socket.io').listen(server);
+
+//Configuration
+io.configure(function(){ this.set('log level', 0); });
+
+//Initialize
+io.sockets.on('connection', require('./lib/sockets/onConnection'));
