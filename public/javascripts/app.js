@@ -10,7 +10,7 @@ var ZombieWorld = {
   Sprites: {
 
     player1: Crafty.sprite(40, "/images/player1.png", {
-      Player1: [0,0]
+      player1: [0,0]
     }),
 
   },
