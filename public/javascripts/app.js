@@ -2,7 +2,7 @@ var ZombieWorld = {
 
   Controller:  {},
   Map: {},
-  Grid: [],
+  LevelConfg: {},
 
   onError: function(error){
     alert(error);

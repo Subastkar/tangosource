@@ -17,9 +17,9 @@ ZombieWorld.Controller.gameController = {
       Crafty.background('rgb(56,208,135)');
 
       var generateLevel = function(){
-        $.getJSON('/configuration?q=level'+ZombieWorld.Level, function(grid){
-          ZombieWorld.Grid = grid;
-          self.buildGrid(ZombieWorld.Grid);
+        $.getJSON('/configuration?q=level'+ZombieWorld.Level, function(levelConfig){
+          ZombieWorld.LevelConfig = levelConfig;
+          self.buildGrid(ZombieWorld.LevelConfig);
         });
       };
 
