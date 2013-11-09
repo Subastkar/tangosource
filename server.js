@@ -10,7 +10,20 @@ var express = require('express')
   , path = require('path');
 
 var app = express();
+var inspect = require('eyes').inspector({stream: null});
 
+global._   = require('underscore');
+global.log = function(){
+  var args = Array.prototype.slice.call(arguments);
+  args[args.length - 1] = inspect(args[args.length - 1]);
+  console.log.bind(console).apply(console, args);
+};
+
+require('./lib/database')(function(error){
+  if(error){ throw new Error(error); }
+  log('Database connected');
+});
+    
 // all environments
 app.set('port', port);
 app.set('views', __dirname + '/views');
@@ -29,6 +42,14 @@ if('development' === app.get('env')){
 
 require('./routes')(app);
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+var io = require('socket.io').listen(server);
+
+//Configuration
+io.configure(function(){ this.set('log level', 0); });
+
+//Initialize
+io.sockets.on('connection', require('./lib/sockets/onConnection'));
