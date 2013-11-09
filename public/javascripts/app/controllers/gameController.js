@@ -31,6 +31,8 @@ ZombieWorld.Controller.gameController = {
       //TODO Link player with currentPlayer
       ZombieWorld.Controller.playerController.init();
 
+      ZombieWorld.Controller.zombieController.init();
+
     });
 
     getConfiguration.fail(function(){ZombieWorld.onError('There was a problem loading map data.');});
