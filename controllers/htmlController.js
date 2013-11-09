@@ -1,11 +1,11 @@
 module.exports = {
 
   index: function(req, res){
-    res.render('index');
+    res.render('pages/index');
   },
 
   game: function(req, res){
-    res.render('game');
+    res.render('pages/game');
   }
 
 };
