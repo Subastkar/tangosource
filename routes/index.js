@@ -1,5 +1,6 @@
 var htmlController    = require('../controllers/htmlController');
 var configController  = require('../controllers/configController');
+var gameController    = require('../controllers/gameController');
 
 module.exports = function(app){
 
@@ -10,4 +11,6 @@ module.exports = function(app){
   //Get configs from the server
   app.get('/configuration', configController.getConfig.bind(configController));
 
+  //Create an user
+  app.post('/user/create', gameController.createUser.bind(gameController));
 };
