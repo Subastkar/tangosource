@@ -3,6 +3,13 @@ extends ../layout
 block content
   script(src='/javascripts/app/controllers/socketController.js')
   script(src='/javascripts/app/controllers/gameController.js')
+  script(src='/javascripts/app/controllers/playerController.js')
+
+  script(src='/javascripts/app/components/socket.js')
+  script(src='/javascripts/app/components/actor.js')
+  script(src='/javascripts/app/components/player.js')
+
+  script(src='/javascripts/app/entities/player.js')
     
   input#game(type='hidden', value='ready')
 
