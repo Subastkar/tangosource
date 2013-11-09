@@ -90,7 +90,7 @@ body {
 /* line 25, ../sass/style.sass */
 .navbar-inverse .navbar-collapse {
   padding-top: 30px;
-  width: 26%;
+  width: 34%;
   float: left;
 }
 
@@ -113,12 +113,111 @@ body {
   z-index: -1;
 }
 
-/* line 46, ../sass/style.sass */
-a {
-  color: #00b7ff;
+/* line 45, ../sass/style.sass */
+h1 {
+  font-size: 24px;
+}
+
+/* line 48, ../sass/style.sass */
+p {
+  font-size: 18px;
 }
 
 /* line 51, ../sass/style.sass */
+a {
+  color: #908b6c;
+}
+
+/* line 54, ../sass/style.sass */
+.btn-primary {
+  background: #262f1e;
+  border-color: #1a1e16;
+}
+/* line 57, ../sass/style.sass */
+.btn-primary:hover {
+  background: #1a1e16;
+  border-color: #1a1e16;
+}
+
+/* line 61, ../sass/style.sass */
+#intro-landing {
+  -webkit-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  background: #302c28 url("../../images/info-bg.jpg") no-repeat;
+  background-size: 100% auto;
+  width: 100%;
+  margin: 425px 0 0;
+  min-height: 400px;
+  padding: 40px;
+  text-align: center;
+  line-height: 44px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-height: 360px;
+  white-space: nowrap;
+}
+/* line 75, ../sass/style.sass */
+#intro-landing .btn {
+  margin-top: 40px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+}
+/* line 78, ../sass/style.sass */
+#intro-landing .rpg-button {
+  background: #463627;
+  border: 2px solid #231c15;
+  box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
+  padding: 12px 25px;
+}
+/* line 83, ../sass/style.sass */
+#intro-landing .rpg-button:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+/* line 85, ../sass/style.sass */
+#intro-landing .container-controls {
+  overflow: hidden;
+  float: right;
+}
+/* line 89, ../sass/style.sass */
+#intro-landing .container-controls .rpg-button.prev, #intro-landing .container-controls .rpg-button.next {
+  padding: 0px 20px;
+}
+/* line 91, ../sass/style.sass */
+#intro-landing .step1 {
+  display: inline-block;
+  width: 100%;
+}
+/* line 94, ../sass/style.sass */
+#intro-landing .step2 {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 98, ../sass/style.sass */
+.next, .prev {
+  float: right;
+  background: #bcb99e;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  line-height: 50px;
+  padding-left: 4px;
+  cursor: pointer;
+}
+
+/* line 108, ../sass/style.sass */
+.prev {
+  float: left;
+  line-height: 49px;
+  padding-left: 1px;
+}
+
+/* line 118, ../sass/style.sass */
 footer#footer {
   background: rgba(0, 0, 0, 0.4);
   height: 60px;
