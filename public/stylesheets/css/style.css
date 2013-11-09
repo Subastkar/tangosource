@@ -319,18 +319,19 @@ input[type="text"], input[type="password"] {
     display: block;
     top: 120px;
     right: 0;
-    height: 64px;
+    height: 144px;
     width: 64px;
     z-index: 999;
   }
   /* line 187, ../sass/style.sass */
   .chat-icon.open {
     right: 38%;
+    height: 64px;
     background: transparent url("../../images/close.png") no-repeat center center;
   }
 }
 
-/* line 191, ../sass/style.sass */
+/* line 192, ../sass/style.sass */
 #chat-slide {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -352,14 +353,14 @@ input[type="text"], input[type="password"] {
   transition: 1s;
 }
 @media (min-width: 1451px) {
-  /* line 191, ../sass/style.sass */
+  /* line 192, ../sass/style.sass */
   #chat-slide {
     width: 18%;
     display: block !important;
   }
 }
 @media (max-width: 1450px) {
-  /* line 191, ../sass/style.sass */
+  /* line 192, ../sass/style.sass */
   #chat-slide {
     width: 0;
     overflow: hidden;
@@ -368,7 +369,7 @@ input[type="text"], input[type="password"] {
     -o-transition: 1s;
     transition: 1s;
   }
-  /* line 210, ../sass/style.sass */
+  /* line 211, ../sass/style.sass */
   #chat-slide.visible {
     -webkit-transition: 1s;
     -moz-transition: 1s;
@@ -379,16 +380,16 @@ input[type="text"], input[type="password"] {
     z-index: 9999;
   }
 }
-/* line 215, ../sass/style.sass */
+/* line 216, ../sass/style.sass */
 #chat-slide label {
   color: #cdccbc;
   width: 100%;
 }
-/* line 218, ../sass/style.sass */
+/* line 219, ../sass/style.sass */
 #chat-slide textarea {
   margin-bottom: 20px;
 }
-/* line 222, ../sass/style.sass */
+/* line 223, ../sass/style.sass */
 #chat-slide #chat {
   margin: 20px;
   background: rgba(0, 0, 0, 0.4);
@@ -397,37 +398,37 @@ input[type="text"], input[type="password"] {
   overflow-x: hidden;
   overflow-y: auto;
 }
-/* line 229, ../sass/style.sass */
+/* line 230, ../sass/style.sass */
 #chat-slide #chat p {
   word-wrap: break-word;
   text-align: left;
   font-size: 16px;
 }
-/* line 233, ../sass/style.sass */
+/* line 234, ../sass/style.sass */
 #chat-slide #chat p:nth-child(odd) {
   background: rgba(0, 0, 0, 0.8);
 }
-/* line 235, ../sass/style.sass */
+/* line 236, ../sass/style.sass */
 #chat-slide #chat p:nth-child(even) {
   background: transparent;
 }
 
-/* line 239, ../sass/style.sass */
+/* line 240, ../sass/style.sass */
 #choose-player {
   text-align: left;
   padding: 22px 0;
 }
-/* line 242, ../sass/style.sass */
+/* line 243, ../sass/style.sass */
 #choose-player .player {
   position: relative;
 }
-/* line 244, ../sass/style.sass */
+/* line 245, ../sass/style.sass */
 #choose-player .player label {
   cursor: pointer;
   color: white;
   font-size: 22px;
 }
-/* line 248, ../sass/style.sass */
+/* line 249, ../sass/style.sass */
 #choose-player .player.selected:before {
   content: ">";
   display: inline-block;
@@ -437,12 +438,12 @@ input[type="text"], input[type="password"] {
   top: 2px;
   font-size: 20px;
 }
-/* line 257, ../sass/style.sass */
+/* line 258, ../sass/style.sass */
 #choose-player input[type="radio"] {
   display: none;
 }
 
-/* line 260, ../sass/style.sass */
+/* line 261, ../sass/style.sass */
 #avatar-player {
   width: 160px;
   height: 160px;
@@ -452,7 +453,7 @@ input[type="text"], input[type="password"] {
   position: relative;
   overflow: hidden;
 }
-/* line 268, ../sass/style.sass */
+/* line 269, ../sass/style.sass */
 #avatar-player li {
   display: none;
   width: 159px;
@@ -463,7 +464,7 @@ input[type="text"], input[type="password"] {
   left: 0;
 }
 
-/* line 278, ../sass/style.sass */
+/* line 279, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;

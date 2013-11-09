@@ -25,7 +25,11 @@ $(function(){
         $('.player').removeClass('selected');
         $(this).addClass('selected');
     });
-    
+
+    $('.chat-icon').on('click',function(){
+        $(this).toggleClass('open');
+        $('#chat-slide').toggleClass('visible');
+    });
 
 });
 
