@@ -1,6 +1,7 @@
 var ZombieWorld = {
 
-  Controller:  {}
+  Controller:  {},
+  Map: {}
 
 };
 
