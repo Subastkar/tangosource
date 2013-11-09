@@ -7,16 +7,24 @@ $(function(){
         }
     });
 
-  $('#intro-landing .next').on('click',function(){
-      $cont = $('#intro-landing');
-      scroll = $cont.scrollLeft();
-      $cont.animate({scrollLeft: scroll + $cont.outerWidth()}, 500);
-  });
-  $('#intro-landing .prev').on('click',function(){
-      $cont = $('#intro-landing');
-      scroll = $cont.scrollLeft();
-      $cont.animate({scrollLeft: scroll - $cont.outerWidth()}, 500);
-  });
+    $('#intro-landing .next').on('click',function(){
+        $cont = $('#intro-landing');
+        scroll = $cont.scrollLeft();
+        $cont.animate({scrollLeft: scroll + $cont.outerWidth()}, 500);
+    });
+    $('#intro-landing .prev').on('click',function(){
+        $cont = $('#intro-landing');
+        scroll = $cont.scrollLeft();
+        $cont.animate({scrollLeft: scroll - $cont.outerWidth()}, 500);
+    });
+    
+
+    $('.player').on('click',function(){
+        var av = $(this).data('player')
+        $("#avatar-player li img").attr('src','/images/'+av+'.png');
+        $('.player').removeClass('selected');
+        $(this).addClass('selected');
+    });
     
 
 });

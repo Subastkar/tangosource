@@ -335,18 +335,32 @@ input[type="text"], input[type="password"] {
   text-align: left;
   padding: 22px 0;
 }
-/* line 195, ../sass/style.sass */
+/* line 194, ../sass/style.sass */
+#choose-player .player {
+  position: relative;
+}
+/* line 196, ../sass/style.sass */
 #choose-player .player label {
   cursor: pointer;
   color: white;
   font-size: 22px;
 }
-/* line 199, ../sass/style.sass */
+/* line 200, ../sass/style.sass */
+#choose-player .player.selected:before {
+  content: ">";
+  display: inline-block;
+  color: white;
+  position: absolute;
+  left: -22px;
+  top: 2px;
+  font-size: 20px;
+}
+/* line 209, ../sass/style.sass */
 #choose-player input[type="radio"] {
   display: none;
 }
 
-/* line 202, ../sass/style.sass */
+/* line 212, ../sass/style.sass */
 #avatar-player {
   width: 160px;
   height: 160px;
@@ -356,7 +370,7 @@ input[type="text"], input[type="password"] {
   position: relative;
   overflow: hidden;
 }
-/* line 210, ../sass/style.sass */
+/* line 220, ../sass/style.sass */
 #avatar-player li {
   display: none;
   width: 159px;
@@ -367,7 +381,7 @@ input[type="text"], input[type="password"] {
   left: 0;
 }
 
-/* line 220, ../sass/style.sass */
+/* line 230, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;

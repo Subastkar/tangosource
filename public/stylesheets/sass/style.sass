@@ -192,10 +192,20 @@ input[type="text"], input[type="password"]
   text-align: left
   padding: 22px 0
   .player 
+    position: relative
     label
       cursor: pointer
       color: white
       font-size: 22px
+    &.selected:before
+      content: ">"
+      display: inline-block
+      color: white
+      position: absolute
+      left: -22px
+      top: 2px
+      font-size: 20px
+
   input[type="radio"]
     display: none
 
