@@ -19,7 +19,7 @@ global.log = function(){
   console.log.bind(console).apply(console, args);
 };
 
-require('./libs/database')(function(error){
+require('./lib/database')(function(error){
   if(error){ throw new Error(error); }
   log('Database connected');
 });
