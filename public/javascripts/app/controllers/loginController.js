@@ -3,7 +3,7 @@ $(function(){
     event.preventDefault();
     var user = {
       username: $('#username').val(),
-      player: $('input[type="radio"]').val()
+      player: $('input:radio[name="player"]:checked').val()
     };
 
     if(user.username && user.player){
