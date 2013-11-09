@@ -284,7 +284,7 @@ a {
 }
 
 /* line 161, ../sass/style.sass */
-#username {
+#username, #chat-slide textarea {
   border: 3px solid #231c15;
   background: #cdccbc;
   width: 80%;
@@ -331,21 +331,103 @@ input[type="text"], input[type="password"] {
 }
 
 /* line 191, ../sass/style.sass */
+#chat-slide {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  background: rgba(98, 97, 84, 0.6);
+  color: #cdccbc;
+  position: absolute;
+  right: 0;
+  height: 400px;
+  text-align: center;
+  width: 670px;
+  width: 18%;
+  height: 640px;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+}
+@media (min-width: 1451px) {
+  /* line 191, ../sass/style.sass */
+  #chat-slide {
+    width: 18%;
+    display: block !important;
+  }
+}
+@media (max-width: 1450px) {
+  /* line 191, ../sass/style.sass */
+  #chat-slide {
+    width: 0;
+    overflow: hidden;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+  }
+  /* line 210, ../sass/style.sass */
+  #chat-slide.visible {
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    width: 38%;
+    display: block !important;
+    z-index: 9999;
+  }
+}
+/* line 215, ../sass/style.sass */
+#chat-slide label {
+  color: #cdccbc;
+  width: 100%;
+}
+/* line 218, ../sass/style.sass */
+#chat-slide textarea {
+  margin-bottom: 20px;
+}
+/* line 222, ../sass/style.sass */
+#chat-slide #chat {
+  margin: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  height: 460px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* line 229, ../sass/style.sass */
+#chat-slide #chat p {
+  word-wrap: break-word;
+  text-align: left;
+  font-size: 16px;
+}
+/* line 233, ../sass/style.sass */
+#chat-slide #chat p:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.8);
+}
+/* line 235, ../sass/style.sass */
+#chat-slide #chat p:nth-child(even) {
+  background: transparent;
+}
+
+/* line 239, ../sass/style.sass */
 #choose-player {
   text-align: left;
   padding: 22px 0;
 }
-/* line 194, ../sass/style.sass */
+/* line 242, ../sass/style.sass */
 #choose-player .player {
   position: relative;
 }
-/* line 196, ../sass/style.sass */
+/* line 244, ../sass/style.sass */
 #choose-player .player label {
   cursor: pointer;
   color: white;
   font-size: 22px;
 }
-/* line 200, ../sass/style.sass */
+/* line 248, ../sass/style.sass */
 #choose-player .player.selected:before {
   content: ">";
   display: inline-block;
@@ -355,12 +437,12 @@ input[type="text"], input[type="password"] {
   top: 2px;
   font-size: 20px;
 }
-/* line 209, ../sass/style.sass */
+/* line 257, ../sass/style.sass */
 #choose-player input[type="radio"] {
   display: none;
 }
 
-/* line 212, ../sass/style.sass */
+/* line 260, ../sass/style.sass */
 #avatar-player {
   width: 160px;
   height: 160px;
@@ -370,7 +452,7 @@ input[type="text"], input[type="password"] {
   position: relative;
   overflow: hidden;
 }
-/* line 220, ../sass/style.sass */
+/* line 268, ../sass/style.sass */
 #avatar-player li {
   display: none;
   width: 159px;
@@ -381,7 +463,7 @@ input[type="text"], input[type="password"] {
   left: 0;
 }
 
-/* line 230, ../sass/style.sass */
+/* line 278, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;

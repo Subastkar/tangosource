@@ -188,6 +188,54 @@ input[type="text"], input[type="password"]
       right: 38%
       background: transparent url('../../images/close.png') no-repeat center center
 
+#chat-slide
+  +border-radius(15px)
+  background: rgba(98,97,84,0.6)
+  color: #cdccbc
+  position: absolute
+  right: 0
+  height: 400px
+  text-align: center
+  width: 670px
+  width: 18%
+  height: 640px
+  +transition(1s)
+  @media (min-width: 1451px)
+    width: 18%
+    display: block !important
+  @media (max-width: 1450px)
+    width: 0
+    overflow: hidden
+    +transition(1s)
+    &.visible
+      +transition(1s)
+      width: 38%
+      display: block !important
+      z-index: 9999
+  label
+    color: #cdccbc
+    width: 100%
+  textarea
+    @extend #username
+    margin-bottom: 20px
+    
+  #chat
+    margin: 20px
+    background: rgba(0,0,0,0.4)
+    border-radius: 5px
+    height: 460px
+    overflow-x: hidden
+    overflow-y: auto
+    p
+      word-wrap: break-word
+      text-align: left
+      font-size: 16px
+    p:nth-child(odd)
+      background: rgba(0,0,0,0.8)
+    p:nth-child(even)
+      background: transparent
+
+
 #choose-player
   text-align: left
   padding: 22px 0
