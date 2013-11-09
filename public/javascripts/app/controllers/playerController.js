@@ -17,7 +17,7 @@ ZombieWorld.Controller.playerController = {
 
   isMyPlayer: function(){
 
-    var player = _.pick(ZombieWorld.currentPlayer, 'id', 'player', 'gun', 'speed');
+    var player = _.pick(ZombieWorld.currentPlayer, 'id', 'player', 'gun', 'speed', 'x', 'y');
 
     ZombieWorld.socket.emit('register player', {
       room: ZombieWorld.room.id,

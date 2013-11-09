@@ -46,13 +46,15 @@ module.exports = {
         //Get player configuration
         Player.findOne({name: user.type }, function(err, playerConf){
           if(err){ res.send(400, err); }
+          var user;
 
-          if(!currentRoom){
-            var usr = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
-            _.extend(usr, _.pick(playerConf, 'speed', 'gun'));
+          if(playerConf){
+            user = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
+            _.extend(user, _.pick(playerConf, 'speed', 'gun'));
           }
 
-           room.players.push(usr || userUpdated);
+          console.log('id', userUpdated.id);
+           room.players.push(user || userUpdated);
            room.save(onError);
 
            res.send({user: user || userUpdated, room: room});
