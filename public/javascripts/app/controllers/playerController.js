@@ -79,6 +79,12 @@ ZombieWorld.Controller.playerController = {
       
     }, this);
 
+  },
+
+  shoot: function(e){
+    // var Player = ZombieWorld.currentPlayer.Entity;
+
+    console.log(e);
   }
 
 };
