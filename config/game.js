@@ -6,5 +6,7 @@ module.exports = {
       width: 20,
       height: 20
     }
-  }
+  },
+
+  level1: require('../grids/room1')
 };
