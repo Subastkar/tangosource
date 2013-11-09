@@ -1,0 +1,3 @@
+node_modules/
+i*.DS_Store
+npm-debug.log
