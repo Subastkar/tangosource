@@ -1,8 +1,18 @@
 var ZombieWorld = {
 
   Controller:  {},
-  Map: {},
-  LevelConfg: {},
+  Map:         {},
+  LevelConfg:  {},
+  Entities:    {},
+  Components:  {},
+
+  Sprites: {
+
+    player1: Crafty.sprite(40, "/images/player1.png", {
+      player1: [0,0]
+    }),
+
+  },
 
   onError: function(error){
     alert(error);
