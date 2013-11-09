@@ -19,7 +19,7 @@ ZombieWorld.Controller.gameController = {
       var generateLevel = function(){
         $.getJSON('/configuration?q=level'+ZombieWorld.Level, function(levelConfig){
           ZombieWorld.LevelConfig = levelConfig;
-          self.buildGrid(ZombieWorld.LevelConfig);
+          self.buildGrid(ZombieWorld.LevelConfig.grid);
         });
       };
 
