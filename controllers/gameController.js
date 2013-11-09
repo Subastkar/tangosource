@@ -17,6 +17,10 @@ module.exports = {
   createUser: function(req, res){
     var user = req.body;
 
+    var newUser = new User(_.extend(user, { alive: true, waiting: false}));
+    newUser.save(onError);
+
+
     //Search for a room available
     Room.findOne({$where: 'this.players.length < 4'}).exec(function(err, currentRoom){
       if(err){return res.send(400, err);}
@@ -27,38 +31,28 @@ module.exports = {
         level: 1
       });
 
-      var newUser = new User(_.extend(user, { alive: true, waiting: false}));
-      newUser.save(onError);
 
-      room.players.push(newUser._id);
-      room.save(onError);
-
-      var data = { roomID: room._id, level: room.level};
-
-
-      if(!currentRoom){
-        data.player = 'ZombieController';
-      }else{
-        _.extend(data, config['level' + room.level].position1);
-        //TODO: create zombies!
-      }
+      //TODO: create zombies!
+      
+      var data = _.extend(config['level' + room.level].position1,{
+        roomID: room._id,
+        level: room.level
+      })
 
       User.findOneAndUpdate({_id: newUser.id}, data, function(err, userUpdated){
 
-        if(!currentRoom){
+        //Get player configuration
+        Player.findOne({name: user.type }, function(err, playerConf){
+          if(err){ res.send(400, err); }
 
-          //Get player configuration
-          Player.findOne({name: user.type }, function(err, playerConf){
-            if(err){ res.send(400, err); }
+           var user = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
+           _.extend(user, _.pick(playerConf, 'speed', 'gun'));
 
-            user = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
-            _.extend(user, _.pick(playerConf, 'speed', 'gun'));
-          });
+           room.players.push(user);
+           room.save(onError);
 
-          res.send({user: user, room: room});
-        }else{
-          res.send({user: userUpdated, room: room});
-        }
+           res.send({user: user, room: room});
+        });
 
       });
 
