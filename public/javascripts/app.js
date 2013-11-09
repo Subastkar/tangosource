@@ -1,7 +1,11 @@
 var ZombieWorld = {
 
   Controller:  {},
-  Map: {}
+  Map: {},
+
+  onError: function(error){
+    alert(error);
+  }
 
 };
 
