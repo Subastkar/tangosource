@@ -54,6 +54,44 @@ ZombieWorld.Controller.playerController = {
     
     ZombieWorld.currentPlayer.Entity = Entity;
 
+
+    var diff;
+    $( "#game-area" ).mousemove(function( event ) {
+      var pos = $( "#game-area" ).offset();
+
+      var y = event.pageY - pos.top - 20;
+      var x = event.pageX - pos.left - 20;
+
+      if(x > Entity.x){
+        diff = x - Entity.x;
+        if(diff > ZombieWorld.currentPlayer.gun.distance){
+          console.log('Stop aim');
+        }
+      }
+
+      if(x < Entity.x){
+        diff = Entity.x - x;
+        if(diff > ZombieWorld.currentPlayer.gun.distance){
+          console.log('Stop aim');
+        }
+      }
+
+      if(y > Entity.y){
+        diff = y - Entity.y;
+        if(diff > ZombieWorld.currentPlayer.gun.distance){
+          console.log('Stop aim');
+        }
+      }
+
+      if(y < Entity.y){
+        diff = Entity.y - y;
+        if(diff > ZombieWorld.currentPlayer.gun.distance){
+          console.log('Stop aim');
+        }
+      }
+
+    });
+
   },
 
   loadPlayers: function(){
@@ -82,9 +120,25 @@ ZombieWorld.Controller.playerController = {
   },
 
   shoot: function(e){
-    // var Player = ZombieWorld.currentPlayer.Entity;
 
-    console.log(e);
+    console.log('Shoot but fail');
+
+    //TODO this logic wen click on a Zombie
+
+    // var Player = ZombieWorld.currentPlayer.Entity;
+    // var distance;
+
+    // if(Player.x > e.x){
+    //   distance = Player.x - e.x;
+    //   console.log(distance);
+    //   if(distance < ZombieWorld.currentPlayer.gun.distance){
+    //     console.log('hit');
+    //   }
+    // }
+
+    // console.log('Player: ', Player.x, Player.y);
+    // console.log('Hit: ', e.x, e.y);
+
   }
 
 };
