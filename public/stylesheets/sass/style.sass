@@ -118,6 +118,104 @@ a
   line-height: 49px
   padding-left: 1px
 
+#login
+  background: rgba(188,185,158,.4)
+  height: 700px
+  margin: 60px
+  padding: 40px
+  border: 2px solid #231c15
+  h1
+    font-size: 48px
+    color: #cdccbc
+  .col-md-6
+    margin: 0 auto
+    float: none
+    text-align: center
+    label
+      font-size: 48px
+      color: #524832
+      margin-bottom: 25px
+      width: 100%
+    .btn
+      clear: both
+      height: 60px
+      color: white
+      background: #463627
+      border: 2px solid #231c15
+      box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b
+      padding: 12px 25px
+      display: block
+      margin: 0 auto
+      position: relative
+      &:hover
+        +opacity(.8)
+    .btn span
+      background: transparent url('../../images/blood-btn.png') no-repeat
+      height: 30px
+      width: 82px
+      display: block
+      position: absolute
+      bottom: -28px
+      left: -2px
+      
+#username
+  border: 3px solid #231c15
+  background: #cdccbc
+  width: 80%
+  height: 90px
+  margin-bottom: 20px
+  padding: 20px
+
+input[type="text"], input[type="password"]
+  outline: 0
+
+.space
+  height: 48px
+
+.chat-icon
+  display: none
+  +transition(1s)
+  @media (max-width: 1450px)
+    background: transparent url('../../images/chat.png') no-repeat
+    position: absolute
+    display: block
+    top: 120px
+    right: 0
+    height: 64px
+    width: 64px
+    z-index: 999
+    &.open
+      right: 38%
+      background: transparent url('../../images/close.png') no-repeat center center
+
+#choose-player
+  text-align: left
+  padding: 22px 0
+  .player 
+    label
+      cursor: pointer
+      color: white
+      font-size: 22px
+  input[type="radio"]
+    display: none
+
+#avatar-player
+  width: 160px
+  height: 160px
+  background: #cdccbc
+  border: 2px solid #231c15
+  padding: 0
+  position: relative
+  overflow: hidden
+  li 
+    display: none
+    width: 159px
+    height: 159px
+    display: block
+    position: absolute
+    top: 0 
+    left: 0
+
   
 footer#footer
   background: black
