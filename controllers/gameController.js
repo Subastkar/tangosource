@@ -27,10 +27,11 @@ module.exports = {
         level: 1
       });
 
+
       log(newUser);
       room.players.push(newUser._id);
       room.save(onError);
-      res.send(newUser);
+      res.send({user: newUser, room: room});
     });
 
   }
