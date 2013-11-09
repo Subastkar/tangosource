@@ -61,9 +61,12 @@ ZombieWorld.Controller.playerController = {
     ZombieWorld.room = JSON.parse(localStorage.getItem('room'));
 
     _.each(ZombieWorld.room.players, function(player){
+      
+      // This guy does not have an Entity
+      if(player.player === "ZombieController" ){ return false; }
 
       // This is me !
-      if(player === ZombieWorld.currentPlayer.id){
+      if(player.id === ZombieWorld.currentPlayer.id){
         return this.isMyPlayer();
       }
 

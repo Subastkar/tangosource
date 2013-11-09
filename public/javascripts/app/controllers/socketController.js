@@ -33,7 +33,40 @@ ZombieWorld.Controller.socketController = {
   },
 
   move: function(data){
-    console.log(data);
+
+    var Player = ZombieWorld.Players[data.player].Entity;
+
+    if(!Player){ return false; }
+
+    Player.x = data.x;
+    Player.y = data.y;
+
+    Player.animate("walk_left", 0 , 1,  3)
+    .animate("walk_right", 0 , 2 ,3)
+    .animate("walk_up", 0,  3, 3)
+    .animate("walk_down", 0, 0 , 3);
+
+    if(data.to === "LEFT_ARROW") {
+      if(!Player.isPlaying("walk_left")){
+        Player.stop().animate("walk_left", 15, 1);
+      }
+
+    } else if(data.to === "RIGHT_ARROW") {
+      if(!Player.isPlaying("walk_right")){
+        Player.stop().animate("walk_right",15, 1);
+      }
+
+    } else if(data.to === "UP_ARROW") {
+      if(!Player.isPlaying("walk_up")){
+        Player.stop().animate("walk_up",15, 1);
+      }
+
+    } else if(data.to === "DOWN_ARROW") {
+      if(!Player.isPlaying("walk_down")){
+        Player.stop().animate("walk_down",15, 1);
+      }
+    }
+
   }
 
 };
