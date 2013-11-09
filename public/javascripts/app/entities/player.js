@@ -1,6 +1,6 @@
 ZombieWorld.Entities.player = function(player){
 
-  return Crafty.e('Player, ' + player.type )
+  return Crafty.e('Player, ' + player.player )
       .attr({
         x: player.x,
         y: player.y

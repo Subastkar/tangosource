@@ -2,17 +2,13 @@ ZombieWorld.Controller.playerController = {
 
   init: function(){
 
-    // Get data from real player
-    var player = {
-      type: 'player1',
-      x: 50,
-      y: 50,
-      speed: 1
-    };
+    var user          = JSON.parse(localStorage.getItem('user'));
 
-    var Entity = ZombieWorld.Entities.player(player);
+    ZombieWorld.currentPlayer = user;
 
-    Entity.fourway(player.speed)
+    var Entity = ZombieWorld.Entities.player(user);
+
+    Entity.fourway(user.speed)
     .bind('NewDirection', function(data) {
       this.stop();
       if (data.x > 0) {
@@ -28,6 +24,6 @@ ZombieWorld.Controller.playerController = {
       }
     });
 
+    ZombieWorld.currentPlayer.player.Entity = Entity;
   }
-
 };
