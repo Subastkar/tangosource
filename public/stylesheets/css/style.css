@@ -66,7 +66,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 7, ../sass/style.sass */
+/* line 8, ../sass/style.sass */
 body {
   font: 14px "volter", Helvetica, Arial, sans-serif;
   background: #302c28 url("../../images/bg.jpg") repeat;
@@ -75,32 +75,80 @@ body {
   min-width: 1200px;
 }
 
-/* line 14, ../sass/style.sass */
+/* line 15, ../sass/style.sass */
 .navbar-inverse.navbar {
   background: rgba(0, 0, 0, 0.4);
   margin-bottom: 0;
 }
-/* line 18, ../sass/style.sass */
+/* line 19, ../sass/style.sass */
 .navbar-inverse.navbar .logo-tango {
   float: right;
   text-align: right;
   padding-top: 31px;
 }
 
-/* line 24, ../sass/style.sass */
+/* line 25, ../sass/style.sass */
 .navbar-inverse .navbar-collapse {
   padding-top: 30px;
   width: 26%;
   float: left;
 }
 
-/* line 29, ../sass/style.sass */
+/* line 30, ../sass/style.sass */
 .votes {
   margin-top: 12px;
   margin-left: 15px;
 }
 
-/* line 33, ../sass/style.sass */
+/* line 34, ../sass/style.sass */
+#hand-top {
+  background: #302c28 url("../../images/hand-bg.jpg") no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  position: fixed;
+  height: 90%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* line 46, ../sass/style.sass */
 a {
   color: #00b7ff;
+}
+
+/* line 51, ../sass/style.sass */
+footer#footer {
+  background: rgba(0, 0, 0, 0.4);
+  height: 60px;
+  text-align: center;
+  padding-top: 17px;
+  color: #cdccbc;
+  margin-bottom: -60px;
+}
+
+/* line 10, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#main-container {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -60px;
+}
+/* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#main-container #my-root-footer {
+  height: 60px;
+}
+
+/* line 20, ../../../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#footer {
+  clear: both;
+  position: relative;
+  height: 60px;
 }

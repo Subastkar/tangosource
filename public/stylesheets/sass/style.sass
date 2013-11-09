@@ -3,6 +3,7 @@
 @import "../css/bootstrap.css"
 @import "../css/bootstrap-theme.css"
 @import "../css/fonts.css"
+@import "compass/layout/sticky-footer"
 
 body 
   font: 14px "volter", Helvetica, Arial, sans-serif
@@ -29,7 +30,30 @@ body
 .votes
   margin-top: 12px
   margin-left: 15px
+
+#hand-top
+  background: #302c28 url('../../images/hand-bg.jpg') no-repeat
+  background-size: 100%
+  overflow: hidden
+  position: fixed
+  height: 90%
+  width: 100%
+  top: 0
+  left: 0
+  z-index: -1
+
   
 a 
   color: #00B7FF
   
+
+
+footer#footer
+  background: rgba(0,0,0,0.4)
+  height: 60px
+  text-align: center
+  padding-top: 17px
+  color: #cdccbc
+  margin-bottom: -60px
+@include sticky-footer(60px, "#main-container", "#my-root-footer", "#footer")
+
