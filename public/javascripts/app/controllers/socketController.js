@@ -16,12 +16,14 @@ ZombieWorld.Controller.socketController = {
   },
 
   insertPlayer: function(player){
+    ZombieWorld.room = JSON.parse(localStorage.getItem('room'));
 
     //This dude is all ready in
     if(ZombieWorld.Players[player.id]){ return false; }
 
     //Insert player into local room
     ZombieWorld.room.players.push(player);
+
     localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
 
     //Build Entity
