@@ -28,9 +28,13 @@ ZombieWorld.Controller.gameController = {
       //Crafty.scene('Level3', generateLevel);
 
       Crafty.scene('Level'+ZombieWorld.Level);
+
+      //TODO Link player with currentPlayer
+      ZombieWorld.Controller.playerController.init();
+
     });
 
-    getConfiguration.fail(function(){ZombieWorld.onError('There was a problem loading the map data.')});
+    getConfiguration.fail(function(){ZombieWorld.onError('There was a problem loading map data.');});
   },
 
   buildGrid: function(grid){

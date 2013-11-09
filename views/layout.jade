@@ -2,7 +2,7 @@ doctype 5
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/css/style.css')
 
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/libs/jquery.min.js')
@@ -12,5 +12,31 @@ html
     script(src='/javascripts/app.js')
   
   body
-    iframe(src="http://nodeknockout.com/iframe/tangosource", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
+    #main-container
+      nav.navbar.navbar-inverse(role="navigation")
+        .navbar-header
+          button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-ex8-collapse")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand#title(href="/")
+            img(src="/images/game-logo.png")
+
+        .navbar-collapse.navbar-ex8-collapse.collapse.col-md-6
+          ul.nav.navbar-nav
+            li
+              a(href="/") Home
+            li
+              a(href="/") Login
+            li
+              a(href="/") Game
+            li
+              iframe.votes(src="http://nodeknockout.com/iframe/tangosource", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
+
+        .col-lg-2.pull-rigth.logo-tango
+          a(href="http://tangosource.com")
+            img(src="/images/ts-logo.png")
+
+    
     block content
