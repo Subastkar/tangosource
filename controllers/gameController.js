@@ -1,8 +1,9 @@
-var mongoose   = require('mongoose');
-var config     = require('../config/game');
+var mongoose  = require('mongoose');
+var config    = require('../config/game');
+var manager   = require('../lib/gameManager');
 
-var roomSchema   = require('../models/room');
 var userSchema   = require('../models/user');
+var roomSchema   = require('../models/room');
 var playerSchema = require('../models/player');
 
 var User   = mongoose.model('user', userSchema);
@@ -44,19 +45,26 @@ module.exports = {
       User.findOneAndUpdate({_id: newUser.id}, data, function(err, userUpdated){
 
         //Get player configuration
-        Player.findOne({name: user.type }, function(err, playerConf){
+
+        Player.findOne({name: userUpdated.player }, function(err, playerConf){
           if(err){ res.send(400, err); }
           var user;
 
           if(playerConf){
             user = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
             _.extend(user, _.pick(playerConf, 'speed', 'gun'));
+            manager.createZombies(user, function(err, roomUpdated){
+              room.players.push(user || userUpdated);
+              room.save(onError);
+              res.send({user: user || userUpdated, room: room});
+            });
           }
-
+          else{
            room.players.push(user || userUpdated);
            room.save(onError);
-
            res.send({user: user || userUpdated, room: room});
+          }
+
         });
 
       });
