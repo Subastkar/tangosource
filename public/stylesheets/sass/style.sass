@@ -24,7 +24,7 @@ body
 
 .navbar-inverse .navbar-collapse
   padding-top: 30px
-  width: 26%
+  width: 34%
   float: left
 
 .votes
@@ -42,9 +42,76 @@ body
   left: 0
   z-index: -1
 
+h1
+  font-size: 24px
+
+p 
+  font-size: 18px
+
+a
+  color: #908b6c
+
+.btn-primary
+  background: #262f1e
+  border-color: #1a1e16
+  &:hover
+    background: #1a1e16
+    border-color: #1a1e16
+
+#intro-landing
+  +box-shadow(inset 0 0 25px rgba(0,0,0,0.75))
+  background: #302c28 url('../../images/info-bg.jpg') no-repeat
+  background-size: 100% auto
+  width: 100%
+  margin: 425px 0 0
+  min-height: 400px
+  padding: 40px
+  text-align: center
+  line-height: 44px
+  overflow-x: hidden 
+  overflow-y: hidden
+  max-height: 360px
+  white-space: nowrap
+  .btn
+    margin-top: 40px
+    +border-radius(0px)
+  .rpg-button
+    background: #463627
+    border: 2px solid #231c15
+    box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b
+    padding: 12px 25px
+    &:hover
+      +opacity(.8)
+  .container-controls
+    overflow: hidden
+    float: right
+    .rpg-button
+      &.prev, &.next
+        padding: 0px 20px
+  .step1
+    display: inline-block
+    width: 100%
+  .step2
+    display: inline-block
+    width: 100%
   
-a 
-  color: #00B7FF
+.next, .prev
+  float: right
+  background: #bcb99e
+  height: 50px
+  width: 50px
+  border-radius: 25px
+  line-height: 50px
+  padding-left: 4px
+  cursor: pointer
+
+.prev
+  float: left
+  line-height: 49px
+  padding-left: 1px
+
+  
+
   
 
 
