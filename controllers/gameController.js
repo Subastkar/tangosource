@@ -47,7 +47,7 @@ module.exports = {
         Player.findOne({name: user.type }, function(err, playerConf){
           if(err){ res.send(400, err); }
 
-          if(playerConf){
+          if(!currentRoom){
             var usr = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
             _.extend(usr, _.pick(playerConf, 'speed', 'gun'));
           }
