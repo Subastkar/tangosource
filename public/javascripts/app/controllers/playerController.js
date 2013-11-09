@@ -2,13 +2,24 @@ ZombieWorld.Controller.playerController = {
 
   init: function(){
 
-    var user          = JSON.parse(localStorage.getItem('user'));
+    var user = JSON.parse(localStorage.getItem('user'));
 
-    ZombieWorld.currentPlayer = user;
+    if(!user){ 
+      ZombieWorld.onError('First log in'); setTimeout(function(){
+        window.location.assign('/login');
+      }, 300);
+    }else{
+      ZombieWorld.currentPlayer = user;
+      this.myPlayer();
+    }
 
-    var Entity = ZombieWorld.Entities.player(user);
+  },
 
-    Entity.fourway(user.speed)
+  myPlayer: function(){
+
+    var Entity = ZombieWorld.Entities.player(ZombieWorld.currentPlayer);
+
+    Entity.fourway(ZombieWorld.currentPlayer.speed)
     .bind('NewDirection', function(data) {
       this.stop();
       if (data.x > 0) {
@@ -24,6 +35,7 @@ ZombieWorld.Controller.playerController = {
       }
     });
 
-    ZombieWorld.currentPlayer.player.Entity = Entity;
+    ZombieWorld.currentPlayer.Entity = Entity;
+
   }
 };
