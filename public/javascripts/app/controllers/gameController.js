@@ -3,7 +3,9 @@ ZombieWorld.Controller.gameController = {
   init: function(){
     ZombieWorld.Controller.socketController.init();
     
-    $.getJSON('/configuration?q=map' ,function(data){
+    var getConfiguration = $.getJSON('/configuration?q=map');
+    
+    getConfiguration.don(function(data){
       ZombieWorld.Map = data;
 
       var width = ZombieWorld.Map.width * ZombieWorld.Map.tile.width;
