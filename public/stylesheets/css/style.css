@@ -198,7 +198,13 @@ a {
   width: 100%;
 }
 
-/* line 98, ../sass/style.sass */
+/* line 99, ../sass/style.sass */
+#intro-landing .blood {
+  background: #463627 url("../../images/blood-btn.png") no-repeat;
+  box-shadow: inset -2px 0px 1px #655b52, inset 2px -2px 1px #36281b;
+}
+
+/* line 103, ../sass/style.sass */
 .next, .prev {
   float: right;
   background: #bcb99e;
@@ -210,14 +216,14 @@ a {
   cursor: pointer;
 }
 
-/* line 108, ../sass/style.sass */
+/* line 113, ../sass/style.sass */
 .prev {
   float: left;
   line-height: 49px;
   padding-left: 1px;
 }
 
-/* line 114, ../sass/style.sass */
+/* line 119, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;
