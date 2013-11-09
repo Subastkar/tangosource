@@ -5,22 +5,30 @@ var isProduction = (process.env.NODE_ENV === 'production');
 var http = require('http');
 var port = (isProduction ? 80 : 8000);
 
-http.createServer(function (req, res) {
-  // http://blog.nodeknockout.com/post/35364532732/protip-add-the-vote-ko-badge-to-your-app
-  var voteko = '<iframe src="http://nodeknockout.com/iframe/tangosource" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>';
+var express = require('express')
+  , routes = require('./routes')
+  , path = require('path');
 
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('<html><body>' + voteko + '</body></html>\n');
-}).listen(port, function(err) {
-  if (err) { console.error(err); process.exit(-1); }
+var app = express();
 
-  // if run as root, downgrade to the owner of this file
-  if (process.getuid() === 0) {
-    require('fs').stat(__filename, function(err, stats) {
-      if (err) { return console.error(err); }
-      process.setuid(stats.uid);
-    });
-  }
+// all environments
+app.set('port', port);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
-  console.log('Server running at http://0.0.0.0:' + port + '/');
+// development only
+if('development' === app.get('env')){
+  app.use(express.errorHandler());
+}
+
+require('./routes')(app);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
 });
