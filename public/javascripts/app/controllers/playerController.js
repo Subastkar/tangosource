@@ -66,31 +66,32 @@ ZombieWorld.Controller.playerController = {
       var y = event.pageY - pos.top - 20;
       var x = event.pageX - pos.left - 20;
 
+      $('#game-area').css("cursor", "url(/images/aim.cur), auto");
       if(x > Entity.x){
         diff = x - Entity.x;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
-          console.log('Stop aim');
+          $('#game-area').css("cursor", "default");
         }
       }
 
       if(x < Entity.x){
         diff = Entity.x - x;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
-          console.log('Stop aim');
+          $('#game-area').css("cursor", "default");
         }
       }
 
       if(y > Entity.y){
         diff = y - Entity.y;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
-          console.log('Stop aim');
+          $('#game-area').css("cursor", "default");
         }
       }
 
       if(y < Entity.y){
         diff = Entity.y - y;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
-          console.log('Stop aim');
+          $('#game-area').css("cursor", "default");
         }
       }
 
