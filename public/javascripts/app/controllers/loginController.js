@@ -1,4 +1,5 @@
 $(function(){
+  localStorage.clear();
   $('#loginForm').submit(function(event){
     event.preventDefault();
     var user = {
