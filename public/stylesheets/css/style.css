@@ -69,13 +69,38 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 7, ../sass/style.sass */
 body {
   font: 14px "volter", Helvetica, Arial, sans-serif;
-  background: #302c28;
+  background: #302c28 url("../../images/bg.jpg") repeat;
   min-width: 1088px;
   overflow: auto;
   min-width: 1200px;
 }
 
-/* line 15, ../sass/style.sass */
+/* line 14, ../sass/style.sass */
+.navbar-inverse.navbar {
+  background: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0;
+}
+/* line 18, ../sass/style.sass */
+.navbar-inverse.navbar .logo-tango {
+  float: right;
+  text-align: right;
+  padding-top: 31px;
+}
+
+/* line 24, ../sass/style.sass */
+.navbar-inverse .navbar-collapse {
+  padding-top: 30px;
+  width: 26%;
+  float: left;
+}
+
+/* line 29, ../sass/style.sass */
+.votes {
+  margin-top: 12px;
+  margin-left: 15px;
+}
+
+/* line 33, ../sass/style.sass */
 a {
   color: #00b7ff;
 }
