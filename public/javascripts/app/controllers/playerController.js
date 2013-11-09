@@ -38,9 +38,9 @@ ZombieWorld.Controller.playerController = {
       } else if (data.y < 0) {
         this.animate('walk_up',    20, -1);
       } else {
-        this.stop();
-      }
-    });
+          this.stop();
+        }
+      });
 
     ZombieWorld.currentPlayer.Entity = Entity;
 
