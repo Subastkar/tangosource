@@ -1,5 +1,7 @@
 var ZombieWorld = {
 
+  Controller:  {}
+
 };
 
 $(function(){
