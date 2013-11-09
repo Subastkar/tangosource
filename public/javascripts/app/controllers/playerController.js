@@ -10,14 +10,21 @@ ZombieWorld.Controller.playerController = {
       }, 300);
     }else{
       ZombieWorld.currentPlayer = user;
-      this.myPlayer();
+      this.loadPlayers();
     }
 
   },
 
-  myPlayer: function(){
+  isMyPlayer: function(){
 
-    var Entity = ZombieWorld.Entities.player(ZombieWorld.currentPlayer);
+    var player = _.pick(ZombieWorld.currentPlayer, 'id', 'player', 'gun', 'speed');
+
+    ZombieWorld.socket.emit('register player', {
+      room: ZombieWorld.room.id,
+      player: player
+    });
+
+    var Entity = new ZombieWorld.Entities.player(ZombieWorld.currentPlayer);
 
     Entity.fourway(ZombieWorld.currentPlayer.speed)
     .bind('NewDirection', function(data) {
@@ -37,5 +44,23 @@ ZombieWorld.Controller.playerController = {
 
     ZombieWorld.currentPlayer.Entity = Entity;
 
+  },
+
+  loadPlayers: function(){
+
+    ZombieWorld.room = JSON.parse(localStorage.getItem('room'));
+
+    _.each(ZombieWorld.room.players, function(player){
+
+      // This is me !
+      if(player === ZombieWorld.currentPlayer.id){
+        return this.isMyPlayer();
+      }
+
+      console.log('Build Entity for: ', player);
+      
+    }, this);
+
   }
+
 };

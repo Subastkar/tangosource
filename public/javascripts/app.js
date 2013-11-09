@@ -5,6 +5,7 @@ var ZombieWorld = {
   LevelConfg:  {},
   Entities:    {},
   Components:  {},
+  Players:     {},
 
   Sprites: {
 

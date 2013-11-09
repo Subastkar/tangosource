@@ -1,7 +1,7 @@
 ZombieWorld.Controller.socketController = {
 
   events: { 
-    'ping' : 'pong'
+    'new player' : 'insertPlayer'
   },
 
   init: function(){
@@ -14,8 +14,19 @@ ZombieWorld.Controller.socketController = {
     });
   },
 
-  pong: function(){
-    console.log('Sockets are set up');
+  insertPlayer: function(player){
+
+    //This dude is all ready in
+    if(ZombieWorld.Players[player.id]){ return false; }
+
+    //Insert player into local room
+    ZombieWorld.room.players[player.id] = player;
+    localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
+    player.Entity = new ZombieWorld.Entities.player(player);
+
+    ZombieWorld.Players[player.id] = player;
+
   }
 
 };
