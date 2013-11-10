@@ -75,12 +75,10 @@ ZombieWorld.Controller.socketController = {
   },
 
   updateZombies: function(){
-    if(ZombieWorld.currentPlayer.player === 'ZombieController'){
       var data = { roomID: ZombieWorld.room._id, zombies: ZombieWorld.zombies};
       $.ajax({type: 'PUT', url: 'room', data: data}).done(function(room){
         ZombieWorld.socket.emit('zombies ready', {room: room._id});
       });
-    }
   },
 
   buildZombies: function(){
