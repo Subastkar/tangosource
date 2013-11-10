@@ -114,6 +114,16 @@ ZombieWorld.Controller.socketController = {
   },
 
   nextLevel: function(data){
-    console.log(data);
+    ZombieWorld.Players[data].waiting = true;
+
+    var pending = _.find(ZombieWorld.Players, function(player){
+      return !player.waiting; // && !player.dead
+    });
+
+    if(!pending){
+      ZombieWorld.Level++;
+      Crafty.scene('Level'+ZombieWorld.Level);
+    }
+
   }
 };

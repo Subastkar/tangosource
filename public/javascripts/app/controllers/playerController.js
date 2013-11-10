@@ -70,7 +70,7 @@ ZombieWorld.Controller.playerController = {
       this.x -= this._movement.x;
       this.y -= this._movement.y;
     }).onHit('Exit', function(){
-      // this.destroy();
+      this.destroy();
       this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
     });
     
