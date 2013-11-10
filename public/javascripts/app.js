@@ -70,7 +70,7 @@ $(function(){
   }, false);
 
   setTimeout(function(){
-    //song.play();
+    song.play();
   },0);
 
   $('.play').click(function(){
