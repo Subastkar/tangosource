@@ -95,7 +95,8 @@ ZombieWorld.Controller.socketController = {
               ZombieWorld.currentZombie = currentZombie;
             });
           }
-            ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
+
+          ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
         }
       });
     });
