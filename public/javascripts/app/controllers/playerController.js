@@ -21,12 +21,14 @@ ZombieWorld.Controller.playerController = {
 
   isMyPlayer: function(){
 
-    var player = _.pick(ZombieWorld.currentPlayer, 'id', 'player', 'gun', 'speed', 'x', 'y');
+    var player = _.pick(ZombieWorld.currentPlayer, '_id', 'player', 'gun', 'speed', 'x', 'y');
 
     ZombieWorld.socket.emit('register player', {
-      room: ZombieWorld.room.id,
+      room: ZombieWorld.room._id,
       player: player
     });
+
+    if(player.player === 'ZombieController'){ return false;  }
 
     var Entity = new ZombieWorld.Entities.player(ZombieWorld.currentPlayer);
 
@@ -46,13 +48,13 @@ ZombieWorld.Controller.playerController = {
       }
     }).bind("EnterFrame", function(e) {
         if(this.isDown("LEFT_ARROW")) {
-          this.emit('move', { to: "LEFT_ARROW",  player: player.id, x: this.x, y: this.y});
+          this.emit('move', { to: "LEFT_ARROW",  player: player.id, x: this.x, y: this.y, room: ZombieWorld.room._id});
         } else if(this.isDown("RIGHT_ARROW")) {
-          this.emit('move', { to: "RIGHT_ARROW", player: player.id, x: this.x, y: this.y});
+          this.emit('move', { to: "RIGHT_ARROW", player: player.id, x: this.x, y: this.y, room: ZombieWorld.room._id});
         } else if(this.isDown("UP_ARROW")) {
-          this.emit('move', { to: "UP_ARROW",    player: player.id, x: this.x, y: this.y});
+          this.emit('move', { to: "UP_ARROW",    player: player.id, x: this.x, y: this.y, room: ZombieWorld.room._id});
         } else if(this.isDown("DOWN_ARROW")) {
-          this.emit('move', { to: "DOWN_ARROW",  player: player.id, x: this.x, y: this.y});
+          this.emit('move', { to: "DOWN_ARROW",  player: player.id, x: this.x, y: this.y, room: ZombieWorld.room._id});
         }
     }).onHit('Obstacle', function(){
       this.x -= this._movement.x;
@@ -122,13 +124,13 @@ ZombieWorld.Controller.playerController = {
 
     _.each(ZombieWorld.room.players, function(player){
       
-      // This guy does not have an Entity
-      if(player.player === "ZombieController" ){ return false; }
-
       // This is me !
       if(player.id === ZombieWorld.currentPlayer.id){
         return this.isMyPlayer();
       }
+
+      // This guy does not have an Entity
+      if(player.player === "ZombieController" ){ return false; }
 
       //Build Entity
       player.Entity = new ZombieWorld.Entities.player(player);

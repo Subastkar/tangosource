@@ -39,17 +39,12 @@ ZombieWorld.Controller.socketController = {
 
   move: function(data){
 
-    var Player = ZombieWorld.Players[data.player].Entity;
+    var Player = ZombieWorld.Players[data.player] ? ZombieWorld.Players[data.player].Entity : null;
 
     if(!Player){ return false; }
 
     Player.x = data.x;
     Player.y = data.y;
-
-    Player.animate("walk_left", 0 , 1,  3)
-    .animate("walk_right", 0 , 2 ,3)
-    .animate("walk_up", 0,  3, 3)
-    .animate("walk_down", 0, 0 , 3);
 
     if(data.to === "LEFT_ARROW") {
       if(!Player.isPlaying("walk_left")){
