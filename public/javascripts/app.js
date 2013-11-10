@@ -61,7 +61,7 @@ $(function(){
     ZombieWorld.Controller.gameController.init();
   }
 
-  var song = new Audio('/sounds/music/Day of Chaos.mp3');
+  var song = new Audio('/sounds/music/Chaos.mp3');
   ZombieWorld.Music = song;
 
   song.addEventListener('ended', function(){
