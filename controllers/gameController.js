@@ -48,7 +48,7 @@ module.exports = {
         //Get player configuration
 
         Player.findOne({name: userUpdated.player }, function(err, playerConf){
-          if(err){ res.send(400, err); }
+          if(err){ return res.send(400, err); }
           var user;
 
           if(playerConf){
@@ -56,8 +56,9 @@ module.exports = {
             _.extend(user, _.pick(playerConf, 'speed', 'gun'));
 
             manager.createZombies(user, function(err, roomUpdated){
-              Room.update({id: room._d}, {$pull: {players: user}},{upsert:true}, function(err, usr){})
-              if(err){res.send(200, err);}
+              if(err){ return res.send(400, err);}
+              room.players.push(user);
+              room.save();
               res.send({user: user, room: roomUpdated});
             });
           }else{
