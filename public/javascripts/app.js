@@ -73,7 +73,7 @@ $(function(){
     song.play();
   },0);
 
-  $('.play').click(function(){
+  $('.play.sound').click(function(){
     if(song.paused){
       song.play();
     } else {
