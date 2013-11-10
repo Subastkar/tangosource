@@ -2,6 +2,7 @@ ZombieWorld.Controller.gameController = {
 
   init: function(){
     ZombieWorld.Level = 1; //This should be retrieved by the server
+    ZombieWorld.Sounds();
     ZombieWorld.Controller.socketController.init();
     
     var getConfiguration = $.getJSON('/configuration?q=map');

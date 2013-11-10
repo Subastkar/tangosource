@@ -38,6 +38,15 @@ var ZombieWorld = {
     })
   },
 
+  Sounds: function(){
+    Crafty.audio.add({
+      player1_shot:       ['/sounds/gun.mp3'],
+      player2_shot:       ['/sounds/shotgun.mp3'],
+      player2_charge:     ['/sounds/charge.mp3'],
+      player3_shot:       ['/sounds/rifle.mp3']
+    });
+  },
+
   onError: function(error){
     alert(error);
   }

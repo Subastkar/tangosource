@@ -62,7 +62,6 @@ ZombieWorld.Controller.playerController = {
     
     ZombieWorld.currentPlayer.Entity = Entity;
 
-
     var diff;
     $( "#game-area" ).mousemove(function( event ) {
       var pos = $( "#game-area" ).offset();
@@ -70,10 +69,12 @@ ZombieWorld.Controller.playerController = {
       var y = event.pageY - pos.top - 20;
       var x = event.pageX - pos.left - 20;
 
+      ZombieWorld.currentPlayer.shootAbility = true;
       $('#game-area').css("cursor", "url(/images/aim.cur), auto");
       if(x > Entity.x){
         diff = x - Entity.x;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -81,6 +82,7 @@ ZombieWorld.Controller.playerController = {
       if(x < Entity.x){
         diff = Entity.x - x;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -88,6 +90,7 @@ ZombieWorld.Controller.playerController = {
       if(y > Entity.y){
         diff = y - Entity.y;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -95,6 +98,7 @@ ZombieWorld.Controller.playerController = {
       if(y < Entity.y){
         diff = Entity.y - y;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -139,9 +143,29 @@ ZombieWorld.Controller.playerController = {
   },
 
   shoot: function(e){
+    if(ZombieWorld.currentPlayer.shootAbility){
+      var shooter = Crafty(ZombieWorld.currentPlayer.player);
 
-    console.log('Shoot but fail');
-
+      Crafty.audio.play(ZombieWorld.currentPlayer.player+'_shot');
+      Crafty.e('Bullet, Collision, Tween').attr({
+        x: shooter.x,
+        y: shooter.y,
+        w: 5,
+        h: 5
+      }).tween({
+        x: e.realX,
+        y: e.realY
+      }, 5)
+      .onHit('Obstacle', function(){
+        this.destroy();
+      })
+      .onHit('Zombie', function(){
+        debugger;
+      })
+      .bind('TweenEnd', function(){
+        this.destroy();
+      });
+    }
     //TODO this logic wen click on a Zombie
 
     // var Player = ZombieWorld.currentPlayer.Entity;
