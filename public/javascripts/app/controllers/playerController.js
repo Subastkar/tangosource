@@ -201,9 +201,6 @@ ZombieWorld.Controller.playerController = {
       .onHit('Obstacle', function(){
         this.destroy();
       })
-      .onHit('Zombie', function(){
-        this.destroy();
-      })
       .bind('TweenEnd', function(){
         this.destroy();
       });

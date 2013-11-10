@@ -57,7 +57,15 @@ ZombieWorld.Controller.zombieController = {
         }
 
         this.removeComponent('Tween');
-      }).bind('TweenEnd', function(){
+      })
+      .onHit('Bullet', function(e){
+        console.log('hitting', e[0].obj);
+        //var zombie = e[0].obj
+        ////console.log(zombie._life);
+        //zombie.life -= ZombieWorld.currentPlayer.gun.damage;
+        this.destroy();
+      })
+      .bind('TweenEnd', function(){
         zombie.stop();
       });
   }
