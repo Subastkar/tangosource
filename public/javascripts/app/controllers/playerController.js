@@ -41,7 +41,7 @@ ZombieWorld.Controller.playerController = {
     });
 
     if(player.player === 'ZombieController'){ 
-        alert("Welcome, zombie controller. Left click zombies to select, and click on the map for straight line movement. As soon as players join, zombies spawn. If your cursor becomes a zombie, you can place new zombies in areas players can't see.");
+        alert("Welcome, zombie controller. Left click zombies to select, and click on the map for straight line movement. As soon as players join, zombies spawn. ");
       return false; 
     }
 
