@@ -60,4 +60,15 @@ $(function(){
     ZombieWorld.Controller.gameController.init();
   }
 
+  var song = new Audio('/sounds/music/Day of Chaos.mp3');
+  ZombieWorld.Music = song;
+
+  song.addEventListener('ended', function(){
+    this.currentTime = 0;
+    this.play();
+  }, false);
+
+  setTimeput(function(){
+    song.play();
+  },0);
 });
