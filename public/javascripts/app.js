@@ -31,6 +31,10 @@ var ZombieWorld = {
     zombie3: Crafty.sprite(40, "/images/zombie3.png", {
       zombie3: [0,0]
     }),
+
+    bullet: Crafty.sprite(5, "images/bullet.png", {
+      bullet: [0,0]
+    })
   },
 
   onError: function(error){
