@@ -97,6 +97,8 @@ ZombieWorld.Controller.playerController = {
 
     });
 
+    ZombieWorld.fog = $('#img-trick');
+
   },
 
   loadPlayers: function(){

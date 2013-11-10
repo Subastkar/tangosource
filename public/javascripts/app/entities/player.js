@@ -11,7 +11,14 @@ ZombieWorld.Entities.player = function(player){
       .animate("walk_up",    0, 3, 3)
       .animate("walk_down",  0, 0, 3)
       .bind('Move', function(from){
-        console.log(from);
+
+        var pos = ZombieWorld.fog.offset();
+
+        var x = from._x - 950;
+        var y = from._y - 350;
+
+        ZombieWorld.fog.offset({ top: y, left: x});
+
       });
 
 };
