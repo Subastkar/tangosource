@@ -229,7 +229,12 @@ ZombieWorld.Controller.playerController = {
             zombieID: zombie._id
           });
 
-          if(zombie._life <= 0){ zombie.destroy(); }
+          if(zombie._life <= 0){ 
+            var data = { roomID: ZombieWorld.room._id,};
+            $.ajax({type: 'PUT', url: 'room/kill_zombie?id='+zombie._id, data: data}).done(function(){
+              zombie.destroy();
+            });
+          }
         }
         this.destroy();
       }).bind('TweenEnd', function(){

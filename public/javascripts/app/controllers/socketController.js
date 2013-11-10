@@ -76,16 +76,13 @@ ZombieWorld.Controller.socketController = {
   },
 
   updateZombies: function(){
-    var data = { roomID: ZombieWorld.room._id, zombies: ZombieWorld.zombies};
-    $.ajax({type: 'PUT', url: 'room', data: data}).done(function(room){
-      ZombieWorld.socket.emit('zombies ready', {room: room._id});
-    });
+      ZombieWorld.socket.emit('zombies ready', {room: ZombieWorld.room._id});
   },
 
   buildZombies: function(){
     $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id}).done(function(room){
       _.each(room.zombies, function(zombie){
-        if(!ZombieWorld.Zombies[zombie._id]){
+        if(!ZombieWorld.Zombies[zombie._id] && zombie.life > 0){
           var Entity = ZombieWorld.Entities.zombie(zombie);
           Entity._life  = zombie.life;
           Entity._speed = zombie.speed;

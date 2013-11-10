@@ -20,4 +20,6 @@ module.exports = function(app){
   //Update room
   app.put('/room', gameController.updateRoom.bind(gameController));
 
+  app.put('/room/kill_zombie', gameController.killZombie.bind(gameController));
+
 };

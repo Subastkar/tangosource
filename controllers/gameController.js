@@ -90,7 +90,6 @@ module.exports = {
   updateRoom: function(req, res){
     var roomID  = req.body.roomID;
     var zombies = req.body.zombies;
-    log('zombies', zombies);
 
     Room.findOne({_id: roomID}, function(err, room){
       if(err){ return res.send(400, err); }
@@ -108,6 +107,30 @@ module.exports = {
 
       room.zombies = _.compact( _.union(newZombies, zombies));
       room.save(onError);
+      res.send('updated zombies n.n');
+    });
+  },
+
+  killZombie: function(req, res){
+    var roomID  = req.body.roomID;
+    var zombieID  = req.query.id;
+
+    Room.findOne({_id: roomID}, function(err, room){
+      if(err){ return res.send(400, err); }
+      if(!room){return res.send(400, 'room not found');}
+
+      var newZombies = _.map(room.zombies, function(zombie){
+        if(zombie._id === zombieID) { zombie.life = 0; }
+        return _.clone(zombie);
+      });
+
+      room.zombies = [];
+      room.save(function(error){
+        if(error){ return onError(error); }
+
+        room.zombies = newZombies;
+        room.save(onError);
+      });
       res.send('updated zombies n.n');
     });
   }
