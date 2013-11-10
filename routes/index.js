@@ -5,6 +5,7 @@ var gameController    = require('../controllers/gameController');
 module.exports = function(app){
 
   app.get('/', htmlController.index.bind(htmlController));
+  app.get('/credits', htmlController.credits.bind(htmlController));
   app.get('/login', htmlController.login.bind(htmlController));
   app.get('/game', htmlController.game.bind(htmlController));
 
