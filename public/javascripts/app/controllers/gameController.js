@@ -2,6 +2,7 @@ ZombieWorld.Controller.gameController = {
 
   init: function(){
     ZombieWorld.Level = 1; //This should be retrieved by the server
+    ZombieWorld.Sounds();
     ZombieWorld.Controller.socketController.init();
     
     var getConfiguration = $.getJSON('/configuration?q=map');
@@ -30,6 +31,10 @@ ZombieWorld.Controller.gameController = {
 
       //TODO Link player with currentPlayer
       ZombieWorld.Controller.playerController.init();
+      ZombieWorld.Controller.zombieController.init();
+
+      //Create zombies 
+      ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
 
       ZombieWorld.Controller.zombieController.init();
 

@@ -5,12 +5,14 @@ block content
   script(src='/javascripts/app/controllers/gameController.js')
   script(src='/javascripts/app/controllers/playerController.js')
   script(src='/javascripts/app/controllers/zombieController.js')
+  script(src='/javascripts/app/controllers/chatController.js')
 
   script(src='/javascripts/app/components/socket.js')
   script(src='/javascripts/app/components/actor.js')
   script(src='/javascripts/app/components/player.js')
   script(src='/javascripts/app/components/zombie.js')
   script(src='/javascripts/app/components/exit.js')
+  script(src='/javascripts/app/components/bullet.js')
 
   script(src='/javascripts/app/entities/player.js')
   script(src='/javascripts/app/entities/free.js')
@@ -31,4 +33,6 @@ block content
       input.btn.btn-primary(type="submit")
     div#chat
 
-  #game-area
+  #game-container
+    #game-area
+      #img-trick

@@ -1,8 +1,11 @@
 ZombieWorld.Controller.socketController = {
 
   events: { 
-    'new player' : 'insertPlayer',
-    'move'       : 'move'
+    'new player'     : 'insertPlayer',
+    'move'           : 'move',
+    'update zombies' : 'updateZombies',
+    'build zombies'  : 'buildZombies',
+    'move zombie'    : 'moveZombie'
   },
 
   init: function(){
@@ -69,6 +72,36 @@ ZombieWorld.Controller.socketController = {
       }
     }
 
-  }
+  },
 
+  updateZombies: function(){
+      var data = { roomID: ZombieWorld.room._id, zombies: ZombieWorld.zombies};
+      $.ajax({type: 'PUT', url: 'room', data: data}).done(function(room){
+        ZombieWorld.socket.emit('zombies ready', {room: room._id});
+      });
+  },
+
+  buildZombies: function(){
+    $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id}).done(function(room){
+      _.each(room.zombies, function(zombie){
+        if(!ZombieWorld.Zombies[zombie._id]){
+          var Entity = ZombieWorld.Entities.zombie(zombie);
+          var currentZombie;
+
+          if(ZombieWorld.currentPlayer.player === 'ZombieController'){
+            Entity.bind('Click', function(){
+              currentZombie = _.findWhere(ZombieWorld.Zombies, {Entity: this});
+              ZombieWorld.currentZombie = currentZombie;
+            });
+          }
+
+          ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
+        }
+      });
+    });
+  },
+
+  moveZombie: function(data){
+    ZombieWorld.Controller.zombieController.move(data);
+  }
 };

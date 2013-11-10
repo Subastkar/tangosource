@@ -6,6 +6,7 @@ var ZombieWorld = {
   Entities:    {},
   Components:  {},
   Players:     {},
+  Zombies:     {},
 
   Sprites: {
     player1: Crafty.sprite(40, "/images/player1.png", {
@@ -31,6 +32,20 @@ var ZombieWorld = {
     zombie3: Crafty.sprite(40, "/images/zombie3.png", {
       zombie3: [0,0]
     }),
+
+    bullet: Crafty.sprite(5, "images/bullet.png", {
+      bullet: [0,0]
+    })
+
+  },
+
+  Sounds: function(){
+    Crafty.audio.add({
+      player1_shot:       ['/sounds/gun.mp3'],
+      player2_shot:       ['/sounds/shotgun.mp3'],
+      player2_charge:     ['/sounds/charge.mp3'],
+      player3_shot:       ['/sounds/rifle.mp3']
+    });
   },
 
   onError: function(error){
@@ -46,4 +61,15 @@ $(function(){
     ZombieWorld.Controller.gameController.init();
   }
 
+  var song = new Audio('/sounds/music/Day of Chaos.mp3');
+  ZombieWorld.Music = song;
+
+  song.addEventListener('ended', function(){
+    this.currentTime = 0;
+    this.play();
+  }, false);
+
+  setTimeout(function(){
+    song.play();
+  },0);
 });

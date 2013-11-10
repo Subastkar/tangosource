@@ -4,6 +4,10 @@ ZombieWorld.Controller.playerController = {
 
     var user = JSON.parse(localStorage.getItem('user'));
 
+    if(user.player === 'ZombieController'){
+      $('#img-trick').remove();
+    }
+
     if(!user){ 
       ZombieWorld.onError('First log in'); setTimeout(function(){
         window.location.assign('/login');
@@ -58,7 +62,6 @@ ZombieWorld.Controller.playerController = {
     
     ZombieWorld.currentPlayer.Entity = Entity;
 
-
     var diff;
     $( "#game-area" ).mousemove(function( event ) {
       var pos = $( "#game-area" ).offset();
@@ -66,10 +69,12 @@ ZombieWorld.Controller.playerController = {
       var y = event.pageY - pos.top - 20;
       var x = event.pageX - pos.left - 20;
 
+      ZombieWorld.currentPlayer.shootAbility = true;
       $('#game-area').css("cursor", "url(/images/aim.cur), auto");
       if(x > Entity.x){
         diff = x - Entity.x;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -77,6 +82,7 @@ ZombieWorld.Controller.playerController = {
       if(x < Entity.x){
         diff = Entity.x - x;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -84,6 +90,7 @@ ZombieWorld.Controller.playerController = {
       if(y > Entity.y){
         diff = y - Entity.y;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
@@ -91,12 +98,22 @@ ZombieWorld.Controller.playerController = {
       if(y < Entity.y){
         diff = Entity.y - y;
         if(diff > ZombieWorld.currentPlayer.gun.distance){
+          ZombieWorld.currentPlayer.shootAbility = false;
           $('#game-area').css("cursor", "default");
         }
       }
 
     });
 
+    ZombieWorld.fog = $('#img-trick');
+
+    var pos = ZombieWorld.fog.offset();
+
+    var x = Entity._x - 985;
+    var y = Entity._y - 560;
+
+    ZombieWorld.fog.offset({ top: y, left: x});
+    
   },
 
   loadPlayers: function(){
@@ -125,24 +142,29 @@ ZombieWorld.Controller.playerController = {
   },
 
   shoot: function(e){
+    if(ZombieWorld.currentPlayer.shootAbility){
+      var shooter = Crafty(ZombieWorld.currentPlayer.player);
 
-    console.log('Shoot but fail');
-
-    //TODO this logic wen click on a Zombie
-
-    // var Player = ZombieWorld.currentPlayer.Entity;
-    // var distance;
-
-    // if(Player.x > e.x){
-    //   distance = Player.x - e.x;
-    //   console.log(distance);
-    //   if(distance < ZombieWorld.currentPlayer.gun.distance){
-    //     console.log('hit');
-    //   }
-    // }
-
-    // console.log('Player: ', Player.x, Player.y);
-    // console.log('Hit: ', e.x, e.y);
+      Crafty.audio.play(ZombieWorld.currentPlayer.player+'_shot');
+      Crafty.e('Bullet, Collision, Tween').attr({
+        x: shooter.x,
+        y: shooter.y,
+        w: 5,
+        h: 5
+      }).tween({
+        x: e.realX,
+        y: e.realY
+      }, 5)
+      .onHit('Obstacle', function(){
+        this.destroy();
+      })
+      .onHit('Zombie', function(){
+        // debugger;
+      })
+      .bind('TweenEnd', function(){
+        this.destroy();
+      });
+    }
 
   }
 
