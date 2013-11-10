@@ -68,7 +68,7 @@ $(function(){
     this.play();
   }, false);
 
-  setTimeput(function(){
+  setTimeout(function(){
     song.play();
   },0);
 });
