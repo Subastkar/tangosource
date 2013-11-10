@@ -90,7 +90,7 @@ ZombieWorld.Controller.socketController = {
           Entity._life  = zombie.life;
           Entity._speed = zombie.speed;
           Entity._id = zombie._id;
-          Entity.alpha: ZombieWorld.currentPlayer.player === 'ZombieController' ? 0.5 : 1;
+          Entity.alpha = ZombieWorld.currentPlayer.player === 'ZombieController' ? 0.5 : 1;
 
           var currentZombie;
 
