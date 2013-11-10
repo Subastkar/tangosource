@@ -9,7 +9,8 @@ ZombieWorld.Controller.socketController = {
     'someone shotted': 'shot',
     'Kill player'    : 'killPlayer',
     'Next Level'     : 'nextLevel',
-    'new pos'        : 'newPos'
+    'new pos'        : 'newPos',
+    'send message'   : 'sendMessage'
   },
 
   init: function(){
@@ -81,12 +82,14 @@ ZombieWorld.Controller.socketController = {
   },
 
   buildZombies: function(){
+    console.log('asdasd');
     $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id}).done(function(room){
       _.each(room.zombies, function(zombie){
+        console.log(ZombieWorld.Zombies);
         if(!ZombieWorld.Zombies[zombie._id]){
-          var Entity = new ZombieWorld.Entities.zombie(zombie);
-          Entity._life  = zombie.life;
-          Entity._speed = zombie.speed;
+          var Entity = ZombieWorld.Entities.zombie(zombie);
+          //Entity._life  = zombie.life;
+          //Entity._speed = zombie.speed;
 
           var currentZombie;
 
@@ -101,11 +104,6 @@ ZombieWorld.Controller.socketController = {
               });
 
               this.alpha = 1;
-              console.log(this);
-
-
-              console.log('currentZombie', currentZombie);
-
             });
           }
           ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
@@ -145,6 +143,11 @@ ZombieWorld.Controller.socketController = {
   newPos: function(position){
     ZombieWorld.currentPlayer.Entity.x = position.x;
     ZombieWorld.currentPlayer.Entity.y = position.y;
+
+  },
+
+  sendMessage: function(data){
+    $('#chat').append('<p>' + data.player +": "+ data.msg +'</p>');
   }
 
 };
