@@ -74,7 +74,19 @@ ZombieWorld.Controller.playerController = {
       this.emit('Kill player', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
     }).onHit('Exit', function(){
       this.destroy();
-      this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
+      this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id, level: ZombieWorld.Level});
+
+      var pending = _.find(ZombieWorld.Players, function(player){
+        return !player.waiting; // && !player.alive
+      });
+
+      if(!pending){
+        ZombieWorld.Level++;
+        Crafty.scene('Level'+ZombieWorld.Level);
+        ZombieWorld.Controller.playerController.loadPlayers();
+      }
+      
+      
     });
     
       

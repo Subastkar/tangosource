@@ -8,7 +8,8 @@ ZombieWorld.Controller.socketController = {
     'move zombie'    : 'moveZombie',
     'someone shotted': 'shot',
     'Kill player'    : 'killPlayer',
-    'Next Level'     : 'nextLevel'
+    'Next Level'     : 'nextLevel',
+    'new pos'        : 'newPos'
   },
 
   init: function(){
@@ -129,7 +130,14 @@ ZombieWorld.Controller.socketController = {
     if(!pending){
       ZombieWorld.Level++;
       Crafty.scene('Level'+ZombieWorld.Level);
+      ZombieWorld.Controller.playerController.loadPlayers();
     }
 
+  },
+
+  newPos: function(position){
+    ZombieWorld.currentPlayer.Entity.x = position.x;
+    ZombieWorld.currentPlayer.Entity.y = position.y;
   }
+
 };
