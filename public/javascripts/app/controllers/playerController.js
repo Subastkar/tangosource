@@ -102,6 +102,7 @@ ZombieWorld.Controller.playerController = {
         ZombieWorld.Level++;
         Crafty.scene('Level'+ZombieWorld.Level);
         ZombieWorld.Controller.playerController.loadPlayers();
+        ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
       }
       
       

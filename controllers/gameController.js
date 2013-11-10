@@ -80,10 +80,21 @@ module.exports = {
   },
 
   getRoom: function(req, res){
-    var id = req.params.id;
+    var id = req.query.id;
+    var level = req.query.level;
 
-    Room.findOne({id: id}).exec(function(err, room){
-      res.send(room);
+    Room.findOne({_id: id}).exec(function(err, room){
+
+      if(room.level === level){ return res.send(room); }
+
+      manager.createZombies({level: level}, function(zombies){
+        // room.zombies = [];
+        // room.save();
+        room.zombies = zombies;
+        room.save();
+        res.send(room);
+      });
+
     });
   },
 
