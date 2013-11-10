@@ -105,8 +105,8 @@ ZombieWorld.Controller.playerController = {
 
     var pos = ZombieWorld.fog.offset();
 
-    var x = Entity._x - 950;
-    var y = Entity._y - 350;
+    var x = Entity._x - 985;
+    var y = Entity._y - 560;
 
     ZombieWorld.fog.offset({ top: y, left: x});
     

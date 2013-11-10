@@ -16,8 +16,8 @@ ZombieWorld.Entities.player = function(player){
 
         var pos = ZombieWorld.fog.offset();
 
-        var x = from._x - 950;
-        var y = from._y - 350;
+        var x = from._x - 985;
+        var y = from._y - 560;
 
         ZombieWorld.fog.offset({ top: y, left: x});
 
