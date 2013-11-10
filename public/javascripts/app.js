@@ -13,11 +13,11 @@ var ZombieWorld = {
       player1: [0,0]
     }),
 
-    player2: Crafty.sprite(40, "/images/player1.png", {
+    player2: Crafty.sprite(40, "/images/player2.png", {
       player2: [0,0]
     }),
 
-    player3: Crafty.sprite(40, "/images/player1.png", {
+    player3: Crafty.sprite(40, "/images/player3.png", {
       player3: [0,0]
     }),
 
@@ -70,7 +70,7 @@ $(function(){
   }, false);
 
   setTimeout(function(){
-    song.play();
+    //song.play();
   },0);
 
   $('.play').click(function(){
