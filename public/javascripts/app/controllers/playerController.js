@@ -89,6 +89,16 @@ ZombieWorld.Controller.playerController = {
       });
 
       if(!pending){
+
+        ZombieWorld.currentPlayer.waiting = false;
+
+        ZombieWorld.room.players = _.map(JSON.parse(localStorage.getItem('room')).players, function(p){
+          if(p.alive){ p.waiting = false; }
+          return p;
+        });
+
+        localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
         ZombieWorld.Level++;
         Crafty.scene('Level'+ZombieWorld.Level);
         ZombieWorld.Controller.playerController.loadPlayers();
@@ -166,6 +176,9 @@ ZombieWorld.Controller.playerController = {
 
       // This guy does not have an Entity
       if(player.player === "ZombieController" ){ return false; }
+
+      // No need to make Entities for dead players
+      if(!player.alive){ return false; }
 
       //Build Entity
       player.Entity = new ZombieWorld.Entities.player(player);

@@ -129,6 +129,14 @@ ZombieWorld.Controller.socketController = {
   },
 
   killPlayer: function(player){
+
+    ZombieWorld.room.players = _.map(JSON.parse(localStorage.getItem('room')).players, function(p){
+      if(p.id === player){ p.alive = false; }
+      return p;
+    });
+
+    localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
     ZombieWorld.Players[player].alive = false;
     ZombieWorld.Players[player].Entity.destroy();
   },
@@ -143,6 +151,14 @@ ZombieWorld.Controller.socketController = {
 
     if(!pending && ZombieWorld.currentPlayer.waiting){
       ZombieWorld.Level++;
+
+      ZombieWorld.room.players = _.map(JSON.parse(localStorage.getItem('room')).players, function(p){
+        if(p.alive){ p.waiting = false; }
+        return p;
+      });
+
+      localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
       Crafty.scene('Level'+ZombieWorld.Level);
       ZombieWorld.Controller.playerController.loadPlayers();
     }
