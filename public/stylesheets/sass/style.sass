@@ -20,6 +20,10 @@ body
     float: right
     text-align: right
     padding-top: 31px
+    @media (max-width: 1450px)
+      img
+        width: 40%
+
     
 
 .navbar-inverse .navbar-collapse
@@ -297,10 +301,8 @@ input[type="text"], input[type="password"]
   border: 2px solid #231c15
   box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b
   padding: 12px 25px
-  position: fixed
-  top: 14px
-  right: 245px
   z-index: 9999
+  margin: -20px 20px 0 0
   &:hover
     +opacity(.8)
   .note

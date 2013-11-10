@@ -86,21 +86,27 @@ body {
   text-align: right;
   padding-top: 31px;
 }
+@media (max-width: 1450px) {
+  /* line 24, ../sass/style.sass */
+  .navbar-inverse.navbar .logo-tango img {
+    width: 40%;
+  }
+}
 
-/* line 25, ../sass/style.sass */
+/* line 29, ../sass/style.sass */
 .navbar-inverse .navbar-collapse {
   padding-top: 30px;
   width: 34%;
   float: left;
 }
 
-/* line 30, ../sass/style.sass */
+/* line 34, ../sass/style.sass */
 .votes {
   margin-top: 12px;
   margin-left: 15px;
 }
 
-/* line 34, ../sass/style.sass */
+/* line 38, ../sass/style.sass */
 #hand-top {
   background: #302c28 url("../../images/hand-bg.jpg") no-repeat;
   background-size: 100%;
@@ -113,33 +119,33 @@ body {
   z-index: -1;
 }
 
-/* line 45, ../sass/style.sass */
+/* line 49, ../sass/style.sass */
 h1 {
   font-size: 24px;
 }
 
-/* line 48, ../sass/style.sass */
+/* line 52, ../sass/style.sass */
 p {
   font-size: 18px;
 }
 
-/* line 51, ../sass/style.sass */
+/* line 55, ../sass/style.sass */
 a {
   color: #908b6c;
 }
 
-/* line 54, ../sass/style.sass */
+/* line 58, ../sass/style.sass */
 .btn-primary {
   background: #262f1e;
   border-color: #1a1e16;
 }
-/* line 57, ../sass/style.sass */
+/* line 61, ../sass/style.sass */
 .btn-primary:hover {
   background: #1a1e16;
   border-color: #1a1e16;
 }
 
-/* line 61, ../sass/style.sass */
+/* line 65, ../sass/style.sass */
 #intro-landing {
   -webkit-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
@@ -158,7 +164,7 @@ a {
   max-height: 360px;
   white-space: nowrap;
 }
-/* line 76, ../sass/style.sass */
+/* line 80, ../sass/style.sass */
 #intro-landing .btn {
   margin-top: 40px;
   -webkit-border-radius: 0px;
@@ -167,49 +173,49 @@ a {
   -o-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 79, ../sass/style.sass */
+/* line 83, ../sass/style.sass */
 #intro-landing .rpg-button {
   background: #463627;
   border: 2px solid #231c15;
   box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
   padding: 12px 25px;
 }
-/* line 84, ../sass/style.sass */
+/* line 88, ../sass/style.sass */
 #intro-landing .rpg-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 86, ../sass/style.sass */
+/* line 90, ../sass/style.sass */
 #intro-landing .container-controls {
   overflow: hidden;
   float: right;
 }
-/* line 90, ../sass/style.sass */
+/* line 94, ../sass/style.sass */
 #intro-landing .container-controls .rpg-button.prev, #intro-landing .container-controls .rpg-button.next {
   padding: 0px 20px;
 }
-/* line 92, ../sass/style.sass */
+/* line 96, ../sass/style.sass */
 #intro-landing .step {
   margin-right: 80px;
 }
-/* line 94, ../sass/style.sass */
+/* line 98, ../sass/style.sass */
 #intro-landing .step1 {
   display: inline-block;
   width: 100%;
 }
-/* line 97, ../sass/style.sass */
+/* line 101, ../sass/style.sass */
 #intro-landing .step2 {
   display: inline-block;
   width: 100%;
 }
 
-/* line 102, ../sass/style.sass */
+/* line 106, ../sass/style.sass */
 #intro-landing .blood {
   background: #463627 url("../../images/blood-btn.png") no-repeat;
   box-shadow: inset -2px 0px 1px #655b52, inset 2px -2px 1px #36281b;
 }
 
-/* line 106, ../sass/style.sass */
+/* line 110, ../sass/style.sass */
 .next, .prev {
   float: right;
   background: #bcb99e;
@@ -221,14 +227,14 @@ a {
   cursor: pointer;
 }
 
-/* line 116, ../sass/style.sass */
+/* line 120, ../sass/style.sass */
 .prev {
   float: left;
   line-height: 49px;
   padding-left: 1px;
 }
 
-/* line 121, ../sass/style.sass */
+/* line 125, ../sass/style.sass */
 #login {
   background: rgba(188, 185, 158, 0.4);
   height: 700px;
@@ -236,25 +242,25 @@ a {
   padding: 40px;
   border: 2px solid #231c15;
 }
-/* line 127, ../sass/style.sass */
+/* line 131, ../sass/style.sass */
 #login h1 {
   font-size: 48px;
   color: #cdccbc;
 }
-/* line 130, ../sass/style.sass */
+/* line 134, ../sass/style.sass */
 #login .col-md-6 {
   margin: 0 auto;
   float: none;
   text-align: center;
 }
-/* line 134, ../sass/style.sass */
+/* line 138, ../sass/style.sass */
 #login .col-md-6 label {
   font-size: 48px;
   color: #524832;
   margin-bottom: 25px;
   width: 100%;
 }
-/* line 139, ../sass/style.sass */
+/* line 143, ../sass/style.sass */
 #login .col-md-6 .btn {
   clear: both;
   height: 60px;
@@ -267,12 +273,12 @@ a {
   margin: 0 auto;
   position: relative;
 }
-/* line 150, ../sass/style.sass */
+/* line 154, ../sass/style.sass */
 #login .col-md-6 .btn:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 152, ../sass/style.sass */
+/* line 156, ../sass/style.sass */
 #login .col-md-6 .btn span {
   background: transparent url("../../images/blood-btn.png") no-repeat;
   height: 30px;
@@ -283,7 +289,7 @@ a {
   left: -2px;
 }
 
-/* line 161, ../sass/style.sass */
+/* line 165, ../sass/style.sass */
 #username, #chat-slide textarea {
   border: 3px solid #231c15;
   background: #cdccbc;
@@ -293,17 +299,17 @@ a {
   padding: 20px;
 }
 
-/* line 169, ../sass/style.sass */
+/* line 173, ../sass/style.sass */
 input[type="text"], input[type="password"] {
   outline: 0;
 }
 
-/* line 172, ../sass/style.sass */
+/* line 176, ../sass/style.sass */
 .space {
   height: 48px;
 }
 
-/* line 175, ../sass/style.sass */
+/* line 179, ../sass/style.sass */
 .chat-icon {
   display: none;
   -webkit-transition: 1s;
@@ -312,7 +318,7 @@ input[type="text"], input[type="password"] {
   transition: 1s;
 }
 @media (max-width: 1450px) {
-  /* line 175, ../sass/style.sass */
+  /* line 179, ../sass/style.sass */
   .chat-icon {
     background: transparent url("../../images/chat.png") no-repeat;
     position: absolute;
@@ -323,7 +329,7 @@ input[type="text"], input[type="password"] {
     width: 64px;
     z-index: 999;
   }
-  /* line 187, ../sass/style.sass */
+  /* line 191, ../sass/style.sass */
   .chat-icon.open {
     right: 38%;
     height: 64px;
@@ -331,7 +337,7 @@ input[type="text"], input[type="password"] {
   }
 }
 
-/* line 192, ../sass/style.sass */
+/* line 196, ../sass/style.sass */
 #chat-slide {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -353,14 +359,14 @@ input[type="text"], input[type="password"] {
   transition: 1s;
 }
 @media (min-width: 1451px) {
-  /* line 192, ../sass/style.sass */
+  /* line 196, ../sass/style.sass */
   #chat-slide {
     width: 18%;
     display: block !important;
   }
 }
 @media (max-width: 1450px) {
-  /* line 192, ../sass/style.sass */
+  /* line 196, ../sass/style.sass */
   #chat-slide {
     width: 0;
     overflow: hidden;
@@ -369,7 +375,7 @@ input[type="text"], input[type="password"] {
     -o-transition: 1s;
     transition: 1s;
   }
-  /* line 211, ../sass/style.sass */
+  /* line 215, ../sass/style.sass */
   #chat-slide.visible {
     -webkit-transition: 1s;
     -moz-transition: 1s;
@@ -380,16 +386,16 @@ input[type="text"], input[type="password"] {
     z-index: 9999;
   }
 }
-/* line 216, ../sass/style.sass */
+/* line 220, ../sass/style.sass */
 #chat-slide label {
   color: #cdccbc;
   width: 100%;
 }
-/* line 219, ../sass/style.sass */
+/* line 223, ../sass/style.sass */
 #chat-slide textarea {
   margin-bottom: 20px;
 }
-/* line 223, ../sass/style.sass */
+/* line 227, ../sass/style.sass */
 #chat-slide #chat {
   margin: 20px;
   background: rgba(0, 0, 0, 0.4);
@@ -398,37 +404,37 @@ input[type="text"], input[type="password"] {
   overflow-x: hidden;
   overflow-y: auto;
 }
-/* line 230, ../sass/style.sass */
+/* line 234, ../sass/style.sass */
 #chat-slide #chat p {
   word-wrap: break-word;
   text-align: left;
   font-size: 16px;
 }
-/* line 234, ../sass/style.sass */
+/* line 238, ../sass/style.sass */
 #chat-slide #chat p:nth-child(odd) {
   background: rgba(0, 0, 0, 0.8);
 }
-/* line 236, ../sass/style.sass */
+/* line 240, ../sass/style.sass */
 #chat-slide #chat p:nth-child(even) {
   background: transparent;
 }
 
-/* line 240, ../sass/style.sass */
+/* line 244, ../sass/style.sass */
 #choose-player {
   text-align: left;
   padding: 22px 0;
 }
-/* line 243, ../sass/style.sass */
+/* line 247, ../sass/style.sass */
 #choose-player .player {
   position: relative;
 }
-/* line 245, ../sass/style.sass */
+/* line 249, ../sass/style.sass */
 #choose-player .player label {
   cursor: pointer;
   color: white;
   font-size: 22px;
 }
-/* line 249, ../sass/style.sass */
+/* line 253, ../sass/style.sass */
 #choose-player .player.selected:before {
   content: ">";
   display: inline-block;
@@ -438,12 +444,12 @@ input[type="text"], input[type="password"] {
   top: 2px;
   font-size: 20px;
 }
-/* line 258, ../sass/style.sass */
+/* line 262, ../sass/style.sass */
 #choose-player input[type="radio"] {
   display: none;
 }
 
-/* line 261, ../sass/style.sass */
+/* line 265, ../sass/style.sass */
 #avatar-player {
   width: 160px;
   height: 160px;
@@ -453,7 +459,7 @@ input[type="text"], input[type="password"] {
   position: relative;
   overflow: hidden;
 }
-/* line 269, ../sass/style.sass */
+/* line 273, ../sass/style.sass */
 #avatar-player li {
   display: none;
   width: 159px;
@@ -464,7 +470,7 @@ input[type="text"], input[type="password"] {
   left: 0;
 }
 
-/* line 278, ../sass/style.sass */
+/* line 282, ../sass/style.sass */
 #game-container {
   width: 1040px;
   height: 540px;
@@ -472,7 +478,7 @@ input[type="text"], input[type="password"] {
   position: relative;
 }
 
-/* line 284, ../sass/style.sass */
+/* line 288, ../sass/style.sass */
 #img-trick {
   background: transparent url("../../images/focus.png") no-repeat;
   display: block;
@@ -483,35 +489,33 @@ input[type="text"], input[type="password"] {
   left: -400px;
 }
 
-/* line 294, ../sass/style.sass */
+/* line 298, ../sass/style.sass */
 .sound {
   background: #463627;
   border: 2px solid #231c15;
   box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
   padding: 12px 25px;
-  position: fixed;
-  top: 14px;
-  right: 245px;
   z-index: 9999;
+  margin: -20px 20px 0 0;
 }
-/* line 303, ../sass/style.sass */
+/* line 305, ../sass/style.sass */
 .sound:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 305, ../sass/style.sass */
+/* line 307, ../sass/style.sass */
 .sound .note {
   background: transparent url("../../images/sound.png") no-repeat;
   width: 27px;
   height: 43px;
   display: block;
 }
-/* line 310, ../sass/style.sass */
+/* line 312, ../sass/style.sass */
 .sound .note.selected {
   background-position: center -46px;
 }
 
-/* line 315, ../sass/style.sass */
+/* line 317, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;
