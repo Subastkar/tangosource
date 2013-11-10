@@ -230,6 +230,14 @@ ZombieWorld.Controller.playerController = {
           });
 
           if(zombie._life <= 0){ 
+            //Update local storage with zombie death
+            ZombieWorld.room.rombies = _.map(ZombieWorld.room.zombies, function(z){
+              if(z._id === zombie._id){ z.life = 0; }
+              return z;
+            });
+            localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
+            //Update database with zombie death
             var data = { roomID: ZombieWorld.room._id,};
             $.ajax({type: 'PUT', url: 'room/kill_zombie?id='+zombie._id, data: data}).done(function(){
               zombie.destroy();
