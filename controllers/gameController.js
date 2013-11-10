@@ -62,9 +62,10 @@ module.exports = {
               damage: playerConf.gun.damage
             };
 
-            manager.createZombies(user, function(err, roomUpdated){
+            manager.createZombies(user, function(zombies){
               if(err){ return res.send(400, err);}
               room.players.push(user);
+              room.zombies = _.union(room.zombies, zombies);
               room.save(onError);
               res.send({user: user, room: room});
             });
