@@ -3,8 +3,9 @@ ZombieWorld.Controller.socketController = {
   events: { 
     'new player'     : 'insertPlayer',
     'move'           : 'move',
-    'update zombies': 'updateZombies',
-    'build zombies': 'buildZombies',
+    'update zombies' : 'updateZombies',
+    'build zombies'  : 'buildZombies',
+    'move zombie'    : 'moveZombie'
   },
 
   init: function(){
