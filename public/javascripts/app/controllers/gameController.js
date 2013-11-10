@@ -29,6 +29,7 @@ ZombieWorld.Controller.gameController = {
       
       Crafty.scene('Victory', function(){
         Crafty.background("url('/images/victory.png')");
+        $('#img-trick').hide();
       });
 
       Crafty.scene('Level'+ZombieWorld.Level);

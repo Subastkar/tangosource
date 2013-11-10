@@ -102,11 +102,11 @@ ZombieWorld.Controller.playerController = {
         ZombieWorld.Level++;
         if(ZombieWorld.Level < 6){
           Crafty.scene('Level'+ZombieWorld.Level);
+          ZombieWorld.Controller.playerController.loadPlayers();
+          ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
         } else {
           Crafty.scene('Victory');
         }
-        ZombieWorld.Controller.playerController.loadPlayers();
-        ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
       }
       
       
