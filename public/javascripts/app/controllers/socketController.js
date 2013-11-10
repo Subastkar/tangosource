@@ -110,6 +110,7 @@ ZombieWorld.Controller.socketController = {
               ZombieWorld.Controller.playerController.shoot(e);
             });
           }
+
           ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
         }
       });
