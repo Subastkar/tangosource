@@ -33,7 +33,6 @@ ZombieWorld.Controller.zombieController = {
 
       zombie.tween({speed: 1, x: destiny.x , y: destiny.y}, 250)
       .onHit('Obstacle', function(e){
-
         zombie.stop();
 
         if (this._movement) {
