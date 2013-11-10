@@ -11,7 +11,9 @@ ZombieWorld.Controller.socketController = {
     'Kill player'    : 'killPlayer',
     'Next Level'     : 'nextLevel',
     'new pos'        : 'newPos',
-    'send message'   : 'sendMessage'
+    'send message'   : 'sendMessage',
+    'kill game'      : 'killGame',
+    'noabl'          : 'noabl'
   },
 
   init: function(){
@@ -180,6 +182,18 @@ ZombieWorld.Controller.socketController = {
 
   sendMessage: function(data){
     $('#chat').append('<p>' + data.player +": "+ data.msg +'</p>');
+  },
+
+  killGame: function(){
+    ZombieWorld.onError('Zombie Controller left... good bye');
+    localStorage.clear();
+    window.location.assign('/');
+  },
+
+  noabl: function(){
+    ZombieWorld.onError('Room not avealable');
+    localStorage.clear();
+    window.location.assign('/');
   }
 
 };
