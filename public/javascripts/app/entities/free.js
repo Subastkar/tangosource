@@ -5,10 +5,11 @@ ZombieWorld.Entities.free = Crafty.c('Free', {
       if(ZombieWorld.currentPlayer.player !== 'ZombieController'){
         ZombieWorld.Controller.playerController.shoot(e);
       }else if(ZombieWorld.currentZombie){
+
         var opts = {
           destiny: {
-            x: this.x,
-            y: this.y,
+            x: e.realX,
+            y: e.realY,
           },
           zombieID: ZombieWorld.currentZombie._id,
           room: ZombieWorld.room._id

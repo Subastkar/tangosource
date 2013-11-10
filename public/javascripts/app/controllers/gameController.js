@@ -24,19 +24,17 @@ ZombieWorld.Controller.gameController = {
       };
 
       Crafty.scene('Level1', generateLevel);
-      //Crafty.scene('Level2', generateLevel);
+      Crafty.scene('Level2', generateLevel);
       //Crafty.scene('Level3', generateLevel);
 
       Crafty.scene('Level'+ZombieWorld.Level);
 
       //TODO Link player with currentPlayer
       ZombieWorld.Controller.playerController.init();
-      ZombieWorld.Controller.zombieController.init();
+      //ZombieWorld.Controller.zombieController.init();
 
       //Create zombies 
       ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
-
-      ZombieWorld.Controller.zombieController.init();
 
     });
 

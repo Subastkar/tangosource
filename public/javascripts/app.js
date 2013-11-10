@@ -13,11 +13,11 @@ var ZombieWorld = {
       player1: [0,0]
     }),
 
-    player2: Crafty.sprite(40, "/images/player1.png", {
+    player2: Crafty.sprite(40, "/images/player2.png", {
       player2: [0,0]
     }),
 
-    player3: Crafty.sprite(40, "/images/player1.png", {
+    player3: Crafty.sprite(40, "/images/player3.png", {
       player3: [0,0]
     }),
 
@@ -61,7 +61,7 @@ $(function(){
     ZombieWorld.Controller.gameController.init();
   }
 
-  var song = new Audio('/sounds/music/Day of Chaos.mp3');
+  var song = new Audio('/sounds/music/Chaos.mp3');
   ZombieWorld.Music = song;
 
   song.addEventListener('ended', function(){
@@ -72,4 +72,13 @@ $(function(){
   setTimeout(function(){
     song.play();
   },0);
+
+  $('.play.sound').click(function(){
+    if(song.paused){
+      song.play();
+    } else {
+      song.pause();
+    }
+    $('.note').toggleClass('selected');
+  });
 });

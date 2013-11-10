@@ -14,11 +14,12 @@ module.exports = function(app){
   //Create an user
   app.post('/user/create', gameController.createUser.bind(gameController));
 
-
   //Get room
   app.get('/room', gameController.getRoom.bind(gameController));
 
   //Update room
   app.put('/room', gameController.updateRoom.bind(gameController));
+
+  app.put('/room/kill_zombie', gameController.killZombie.bind(gameController));
 
 };

@@ -14,10 +14,11 @@ $( function(){
     var data = {
       msg: msg.val(),
       player: player.username,
-      level: player.level
+      room: ZombieWorld.room._id
     }
 
-    ZombieWorld.socket.emit('Send message', data);
+    $('#chat').append('<p> Me: ' + data.msg +'</p>');
+    ZombieWorld.socket.emit('send message', data);
     msg.val('');
   });
 

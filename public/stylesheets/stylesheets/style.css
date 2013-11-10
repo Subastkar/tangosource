@@ -470,6 +470,7 @@ input[type="text"], input[type="password"] {
   width: 1040px;
   height: 540px;
   display: block;
+  z-index: 20;
 }
 
 /* line 285, ../sass/style.sass */

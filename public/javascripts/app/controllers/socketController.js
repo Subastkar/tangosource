@@ -5,7 +5,13 @@ ZombieWorld.Controller.socketController = {
     'move'           : 'move',
     'update zombies' : 'updateZombies',
     'build zombies'  : 'buildZombies',
-    'move zombie'    : 'moveZombie'
+    'move zombie'    : 'moveZombie',
+    'someone shotted': 'shot',
+    'kill zombie'    : 'killZombie',
+    'Kill player'    : 'killPlayer',
+    'Next Level'     : 'nextLevel',
+    'new pos'        : 'newPos',
+    'send message'   : 'sendMessage'
   },
 
   init: function(){
@@ -33,23 +39,18 @@ ZombieWorld.Controller.socketController = {
     player.Entity = new ZombieWorld.Entities.player(player);
 
     //Extend Players
-    ZombieWorld.Players[player.id] = player;
+    ZombieWorld.Players[player.id || player._id] = player;
 
   },
 
   move: function(data){
 
-    var Player = ZombieWorld.Players[data.player].Entity;
+    var Player = ZombieWorld.Players[data.player] ? ZombieWorld.Players[data.player].Entity : null;
 
     if(!Player){ return false; }
 
     Player.x = data.x;
     Player.y = data.y;
-
-    Player.animate("walk_left", 0 , 1,  3)
-    .animate("walk_right", 0 , 2 ,3)
-    .animate("walk_up", 0,  3, 3)
-    .animate("walk_down", 0, 0 , 3);
 
     if(data.to === "LEFT_ARROW") {
       if(!Player.isPlaying("walk_left")){
@@ -75,23 +76,37 @@ ZombieWorld.Controller.socketController = {
   },
 
   updateZombies: function(){
-      var data = { roomID: ZombieWorld.room._id, zombies: ZombieWorld.zombies};
-      $.ajax({type: 'PUT', url: 'room', data: data}).done(function(room){
-        ZombieWorld.socket.emit('zombies ready', {room: room._id});
-      });
+      ZombieWorld.socket.emit('zombies ready', {room: ZombieWorld.room._id});
   },
 
   buildZombies: function(){
-    $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id}).done(function(room){
+    ZombieWorld.level = ZombieWorld.level || 1;
+    $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id+'&level='+ZombieWorld.level}).done(function(room){
       _.each(room.zombies, function(zombie){
-        if(!ZombieWorld.Zombies[zombie._id]){
+        if(!ZombieWorld.Zombies[zombie._id] && zombie.life > 0){
           var Entity = ZombieWorld.Entities.zombie(zombie);
+          Entity._life  = zombie.life;
+          Entity._speed = zombie.speed;
+          Entity._id = zombie._id;
+          Entity.alpha = ZombieWorld.currentPlayer.player === 'ZombieController' ? 0.5 : 1;
+
           var currentZombie;
 
           if(ZombieWorld.currentPlayer.player === 'ZombieController'){
             Entity.bind('Click', function(){
+
               currentZombie = _.findWhere(ZombieWorld.Zombies, {Entity: this});
               ZombieWorld.currentZombie = currentZombie;
+
+              _.each(ZombieWorld.Zombies, function(zombie){
+                zombie.Entity._alpha = 0.5;
+              });
+
+              this.alpha = 1;
+            });
+          } else {
+            Entity.bind('Click', function(e){
+              ZombieWorld.Controller.playerController.shoot(e);
             });
           }
 
@@ -103,5 +118,64 @@ ZombieWorld.Controller.socketController = {
 
   moveZombie: function(data){
     ZombieWorld.Controller.zombieController.move(data);
+  },
+
+  shot: function(data){
+    ZombieWorld.Controller.playerController.drawShoot(data);
+  },
+
+  killZombie: function(data){
+    ZombieWorld.Controller.zombieController.hit(data);
+  },
+
+  killPlayer: function(player){
+
+    ZombieWorld.room.players = _.map(JSON.parse(localStorage.getItem('room')).players, function(p){
+      if(p.id === player){ p.alive = false; }
+      return p;
+    });
+
+    localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
+    ZombieWorld.Players[player].alive = false;
+    ZombieWorld.Players[player].Entity.destroy();
+  },
+
+  nextLevel: function(data){
+    ZombieWorld.Players[data].waiting = true;
+    ZombieWorld.Players[data].Entity.destroy();
+
+    var pending = _.find(ZombieWorld.Players, function(player){
+      return !player.waiting && player.player !== 'ZombieController' && player.alive;
+    });
+
+    if(!pending && ZombieWorld.currentPlayer.waiting){
+      ZombieWorld.Level++;
+
+      ZombieWorld.room.players = _.map(JSON.parse(localStorage.getItem('room')).players, function(p){
+        if(p.alive){ p.waiting = false; }
+        return p;
+      });
+
+      localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
+
+      Crafty.scene('Level'+ZombieWorld.Level);
+      ZombieWorld.Controller.playerController.loadPlayers();
+      ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
+    }
+
+  },
+
+  newPos: function(position){
+    ZombieWorld.currentPlayer.x = position.x;
+    ZombieWorld.currentPlayer.y = position.y;
+    ZombieWorld.currentPlayer.Entity.x = position.x;
+    ZombieWorld.currentPlayer.Entity.y = position.y;
+
+  },
+
+  sendMessage: function(data){
+    $('#chat').append('<p>' + data.player +": "+ data.msg +'</p>');
   }
+
 };
