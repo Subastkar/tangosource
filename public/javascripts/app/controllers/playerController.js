@@ -4,6 +4,10 @@ ZombieWorld.Controller.playerController = {
 
     var user = JSON.parse(localStorage.getItem('user'));
 
+    if(user.player === 'ZombieController'){
+      $('#img-trick').remove();
+    }
+
     if(!user){ 
       ZombieWorld.onError('First log in'); setTimeout(function(){
         window.location.assign('/login');
@@ -108,10 +112,7 @@ ZombieWorld.Controller.playerController = {
     _.each(ZombieWorld.room.players, function(player){
       
       // This guy does not have an Entity
-      if(player.player === "ZombieController" ){ 
-        $('#img-trick').remove();
-        return false; 
-      }
+      if(player.player === "ZombieController" ){ return false; }
 
       // This is me !
       if(player.id === ZombieWorld.currentPlayer.id){
