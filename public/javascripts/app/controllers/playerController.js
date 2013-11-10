@@ -108,7 +108,10 @@ ZombieWorld.Controller.playerController = {
     _.each(ZombieWorld.room.players, function(player){
       
       // This guy does not have an Entity
-      if(player.player === "ZombieController" ){ return false; }
+      if(player.player === "ZombieController" ){ 
+        $('#img-trick').remove();
+        return false; 
+      }
 
       // This is me !
       if(player.id === ZombieWorld.currentPlayer.id){

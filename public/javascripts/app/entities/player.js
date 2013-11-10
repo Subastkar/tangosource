@@ -12,6 +12,8 @@ ZombieWorld.Entities.player = function(player){
       .animate("walk_down",  0, 0, 3)
       .bind('Move', function(from){
 
+        if(!ZombieWorld.fog){ return false; }
+
         var pos = ZombieWorld.fog.offset();
 
         var x = from._x - 950;
