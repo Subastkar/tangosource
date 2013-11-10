@@ -15,23 +15,28 @@ ZombieWorld.Controller.zombieController = {
     var zombie = Zombie.Entity;
     var destiny = opts.destiny;
 
-    if(zombie && !zombie.__c.Tween){ zombie.addComponent('Tween'); }
-
     if(zombie && zombie.isPlaying()){ 
-      zombie.stop();}
+      zombie.removeComponent('Tween');
+      zombie.stop();
+    }
+
+    if(zombie && !zombie.__c.Tween){ zombie.addComponent('Tween'); }
 
       var animation;
       var difX = zombie.x - destiny.x;
       var difY = zombie.y - destiny.y;
+      var velocity;
 
       if(Math.abs(difX) > Math.abs(difY)){
         animation = zombie.x > destiny.x ? 'walk_left' : 'walk_right' ;
+        velocity = (Math.abs(difX) / zombie._speed) * 3;
       }else{
         animation = zombie.y > destiny.y ? 'walk_up' : 'walk_down' ;
+        velocity = (Math.abs(difY) / zombie._speed) * 3;
       }
       zombie.animate(animation, 20, -1);
 
-      zombie.tween({speed: 1, x: destiny.x , y: destiny.y}, 250)
+      zombie.tween({x: destiny.x , y: destiny.y}, parseInt(velocity))
       .onHit('Obstacle', function(e){
         zombie.stop();
 
