@@ -103,6 +103,14 @@ ZombieWorld.Controller.playerController = {
 
     ZombieWorld.fog = $('#img-trick');
 
+    var pos = ZombieWorld.fog.offset();
+
+    var x = Entity._x - 950;
+    var y = Entity._y - 350;
+
+    ZombieWorld.fog.offset({ top: y, left: x});
+    
+
   },
 
   loadPlayers: function(){
