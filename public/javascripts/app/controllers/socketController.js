@@ -13,7 +13,8 @@ ZombieWorld.Controller.socketController = {
     'new pos'        : 'newPos',
     'send message'   : 'sendMessage',
     'kill game'      : 'killGame',
-    'noabl'          : 'noabl'
+    'noabl'          : 'noabl',
+    'kick'           : 'kick'
   },
 
   init: function(){
@@ -197,6 +198,16 @@ ZombieWorld.Controller.socketController = {
     ZombieWorld.onError('Room not avealable');
     localStorage.clear();
     window.location.assign('/');
+  },
+
+  kick: function(id){
+    console.log(id);
+    var player = ZombieWorld.Players[id];
+    if(player){
+      alert(player.username + ' Left!');
+      ZombieWorld.Players[id].alive = false;
+      ZombieWorld.Players[id].Entity.destroy();
+    }
   }
 
 };

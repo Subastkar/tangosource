@@ -2,7 +2,15 @@ ZombieWorld.Controller.playerController = {
 
   init: function(){
 
-    var user = JSON.parse(localStorage.getItem('user'));
+    var register = localStorage.getItem('register');
+    var user     = JSON.parse(localStorage.getItem('user'));
+
+    if(register){ 
+      alert('Damn something went wrong!');
+      ZombieWorld.socket.emit('kick', user.id);
+      localStorage.clear();
+      return window.location.assign('/');
+    }
 
     if(!user){ 
       ZombieWorld.onError('First log in'); setTimeout(function(){
@@ -25,12 +33,17 @@ ZombieWorld.Controller.playerController = {
 
     var player = _.pick(ZombieWorld.currentPlayer, 'id', 'player', 'gun', 'speed', 'x', 'y', 'alive', 'waiting');
 
+    localStorage.setItem('register', true);
+
     ZombieWorld.socket.emit('register player', {
       room: ZombieWorld.room._id,
       player: player
     });
 
-    if(player.player === 'ZombieController'){ return false;  }
+    if(player.player === 'ZombieController'){ 
+        alert("Welcome, zombie controller. Left click zombies to select, and click on the map for straight line movement. As soon as players join, zombies spawn. If your cursor becomes a zombie, you can place new zombies in areas players can't see.");
+      return false; 
+    }
 
     var Entity = new ZombieWorld.Entities.player(ZombieWorld.currentPlayer);
 
