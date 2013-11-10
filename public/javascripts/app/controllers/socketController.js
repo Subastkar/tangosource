@@ -101,5 +101,9 @@ ZombieWorld.Controller.socketController = {
         }
       });
     });
+  },
+
+  moveZombie: function(data){
+    ZombieWorld.Controller.zombieController.move(data);
   }
 };
