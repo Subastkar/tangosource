@@ -4,6 +4,10 @@ ZombieWorld.Controller.playerController = {
 
     var user = JSON.parse(localStorage.getItem('user'));
 
+    if(user.player === 'ZombieController'){
+      $('#img-trick').remove();
+    }
+
     if(!user){ 
       ZombieWorld.onError('First log in'); setTimeout(function(){
         window.location.assign('/login');
@@ -96,6 +100,8 @@ ZombieWorld.Controller.playerController = {
       }
 
     });
+
+    ZombieWorld.fog = $('#img-trick');
 
   },
 

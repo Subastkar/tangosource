@@ -465,25 +465,14 @@ input[type="text"], input[type="password"] {
 }
 
 /* line 278, ../sass/style.sass */
-#game-container {
-  width: 1040px;
-  height: 540px;
-  overflow: hidden;
-  position: relative;
-}
-
-/* line 284, ../sass/style.sass */
 #img-trick {
   background: transparent url("../../images/focus.png") no-repeat;
+  width: 1040px;
+  height: 540px;
   display: block;
-  width: 2000px;
-  height: 1000px;
-  position: absolute;
-  top: -300px;
-  left: -400px;
 }
 
-/* line 295, ../sass/style.sass */
+/* line 285, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;
