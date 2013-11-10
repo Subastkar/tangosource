@@ -481,7 +481,6 @@ input[type="text"], input[type="password"] {
   position: absolute;
   top: -300px;
   left: -400px;
-  z-index: 20;
 }
 
 /* line 294, ../sass/style.sass */
@@ -505,7 +504,7 @@ input[type="text"], input[type="password"] {
 }
 /* line 306, ../sass/style.sass */
 .sound .note.selected {
-  background-position: center -43px;
+  background-position: center -46px;
 }
 
 /* line 311, ../sass/style.sass */

@@ -79,5 +79,6 @@ $(function(){
     } else {
       song.pause();
     }
+    $('.note').toggleClass('selected');
   });
 });
