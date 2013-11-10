@@ -131,12 +131,13 @@ ZombieWorld.Controller.socketController = {
 
   nextLevel: function(data){
     ZombieWorld.Players[data].waiting = true;
+    ZombieWorld.Players[data].Entity.destroy();
 
     var pending = _.find(ZombieWorld.Players, function(player){
-      return !player.waiting; // && !player.alive
+      return !player.waiting && player.player !== 'ZombieController'; // && !player.alive
     });
 
-    if(!pending){
+    if(!pending && ZombieWorld.currentPlayer.waiting){
       ZombieWorld.Level++;
       Crafty.scene('Level'+ZombieWorld.Level);
       ZombieWorld.Controller.playerController.loadPlayers();

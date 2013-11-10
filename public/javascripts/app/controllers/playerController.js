@@ -5,6 +5,7 @@ ZombieWorld.Controller.playerController = {
     var user = JSON.parse(localStorage.getItem('user'));
 
     if(user.player === 'ZombieController'){
+      user.waiting = true;
       $('#img-trick').remove();
     }
 
@@ -73,6 +74,7 @@ ZombieWorld.Controller.playerController = {
       this.destroy();
       this.emit('Kill player', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
     }).onHit('Exit', function(){
+      ZombieWorld.currentPlayer.waiting = true;
       this.destroy();
       this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id, level: ZombieWorld.Level});
 
@@ -88,8 +90,6 @@ ZombieWorld.Controller.playerController = {
       
       
     });
-    
-      
     
     ZombieWorld.currentPlayer.Entity = Entity;
 
