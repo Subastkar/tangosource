@@ -484,7 +484,31 @@ input[type="text"], input[type="password"] {
   z-index: 20;
 }
 
-/* line 295, ../sass/style.sass */
+/* line 294, ../sass/style.sass */
+.sound {
+  background: #463627;
+  border: 2px solid #231c15;
+  box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
+  padding: 12px 25px;
+}
+/* line 299, ../sass/style.sass */
+.sound:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+/* line 301, ../sass/style.sass */
+.sound .note {
+  background: transparent url("../../images/sound.png") no-repeat;
+  width: 27px;
+  height: 43px;
+  display: block;
+}
+/* line 306, ../sass/style.sass */
+.sound .note.selected {
+  background-position: center -43px;
+}
+
+/* line 311, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;

@@ -290,6 +290,22 @@ input[type="text"], input[type="password"]
   // TODO : you have to move these properties in order to move the hold
   top: -300px 
   left: -400px
+
+.sound
+  background: #463627 
+  border: 2px solid #231c15
+  box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b
+  padding: 12px 25px
+  &:hover
+    +opacity(.8)
+  .note
+    background: transparent url('../../images/sound.png') no-repeat
+    width: 27px
+    height: 43px
+    display: block
+    &.selected
+      background-position: center -43px
+
   
 
 footer#footer
