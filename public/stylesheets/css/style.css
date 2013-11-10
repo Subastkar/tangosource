@@ -487,10 +487,10 @@ input[type="text"], input[type="password"] {
   position: absolute;
   top: -300px;
   left: -400px;
-  z-index: 20
+  z-index: 20;
 }
 
-/* line 298, ../sass/style.sass */
+/* line 299, ../sass/style.sass */
 .sound {
   background: #463627;
   border: 2px solid #231c15;
@@ -499,24 +499,24 @@ input[type="text"], input[type="password"] {
   z-index: 9999;
   margin: -20px 20px 0 0;
 }
-/* line 305, ../sass/style.sass */
+/* line 306, ../sass/style.sass */
 .sound:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 307, ../sass/style.sass */
+/* line 308, ../sass/style.sass */
 .sound .note {
   background: transparent url("../../images/sound.png") no-repeat;
   width: 27px;
   height: 43px;
   display: block;
 }
-/* line 312, ../sass/style.sass */
+/* line 313, ../sass/style.sass */
 .sound .note.selected {
   background-position: center -46px;
 }
 
-/* line 317, ../sass/style.sass */
+/* line 318, ../sass/style.sass */
 footer#footer {
   background: black;
   height: 60px;

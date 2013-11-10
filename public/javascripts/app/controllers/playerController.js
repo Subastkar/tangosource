@@ -100,9 +100,13 @@ ZombieWorld.Controller.playerController = {
         localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
 
         ZombieWorld.Level++;
-        Crafty.scene('Level'+ZombieWorld.Level);
-        ZombieWorld.Controller.playerController.loadPlayers();
-        ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
+        if(ZombieWorld.Level < 6){
+          Crafty.scene('Level'+ZombieWorld.Level);
+          ZombieWorld.Controller.playerController.loadPlayers();
+          ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
+        } else {
+          Crafty.scene('Victory');
+        }
       }
       
       
