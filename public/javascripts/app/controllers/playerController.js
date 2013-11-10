@@ -142,8 +142,14 @@ ZombieWorld.Controller.playerController = {
   },
 
   shoot: function(e){
-    if(ZombieWorld.currentPlayer.shootAbility){
+    if(ZombieWorld.currentPlayer.shootAbility && !ZombieWorld.currentPlayer.shoot){
       var shooter = Crafty(ZombieWorld.currentPlayer.player);
+
+      ZombieWorld.currentPlayer.shoot = true;
+
+      setTimeout(function(){
+        ZombieWorld.currentPlayer.shoot = false;
+      }, ZombieWorld.currentPlayer.gun.frequency * 700);
 
       Crafty.audio.play(ZombieWorld.currentPlayer.player+'_shot');
       Crafty.e('Bullet, Collision, Tween').attr({
