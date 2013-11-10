@@ -12,7 +12,7 @@ ZombieWorld.Entities.free = Crafty.c('Free', {
           },
           zombieID: ZombieWorld.currentZombie._id,
           room: ZombieWorld.room._id
-        }
+        };
 
         ZombieWorld.Controller.zombieController.move(opts);
         ZombieWorld.socket.emit('move zombie', opts);
