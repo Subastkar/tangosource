@@ -8,7 +8,7 @@ block content
       label Username
       input#username(placeholder='User_test')
       label Choose your destiny
-      #choose-player.col-md-3.col-md-offset-3
+      #choose-player.col-md-3.col-md-offset-2
         .player(data-player="avatar_1")
           label
             input.pick(type='radio', value='player1', name='player')
@@ -24,6 +24,20 @@ block content
       ul#avatar-player.col-md-3
         li
           img(src="/images/avatar_0.png")
+      .col-md-3.player-description
+        ul
+          li.avatar_1
+            h2 Player 1:
+            p Pistoleer
+            p Fast feet, lower damage and range
+          li.avatar_2
+            h2 Player 2:
+            p Shotgunner
+            p Medium speed, medium damage
+          li.avatar_3
+            h2 Player 3:
+            p Rifler
+            p Slow speed, high damage and range
 
       button.play.btn.rpg-button(type='submit') Play
         // span.red

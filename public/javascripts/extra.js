@@ -24,6 +24,8 @@ $(function(){
         $("#avatar-player li img").attr('src','/images/'+av+'.png');
         $('.player').removeClass('selected');
         $(this).addClass('selected');
+        $(".player-description li").hide();
+        $("."+av).fadeIn("fast");
     });
 
     $('.chat-icon').on('click',function(){
