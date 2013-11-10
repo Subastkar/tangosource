@@ -10,5 +10,9 @@ module.exports = {
 
   login: function(req, res){
     res.render('pages/login');
+  },
+
+  credits: function(req, res){
+    res.render('pages/credits');
   }
 };

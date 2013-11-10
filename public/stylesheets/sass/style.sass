@@ -25,6 +25,8 @@ body
         width: 40%
 
     
+.navbar-brand
+  padding: 25px 15px
 
 .navbar-inverse .navbar-collapse
   padding-top: 30px
@@ -48,12 +50,16 @@ body
 
 h1
   font-size: 24px
+h2
+  font-size: 22px
 
 p 
   font-size: 18px
 
 a
   color: #908b6c
+  &:hover
+    color: #ccc
 
 .btn-primary
   background: #262f1e
@@ -122,7 +128,7 @@ a
   line-height: 49px
   padding-left: 1px
 
-#login
+.content-block
   background: rgba(188,185,158,.4)
   height: 700px
   margin: 60px
@@ -161,6 +167,18 @@ a
       position: absolute
       bottom: -28px
       left: -2px
+
+#credits
+  color: white
+  .intro
+    margin-top: 40px
+  h2
+    margin-top: 40px
+    color: #cdccbc
+
+  li
+    margin-top: 20px
+    margin-left: 40px
       
 #username
   border: 3px solid #231c15
@@ -313,7 +331,15 @@ input[type="text"], input[type="password"]
     &.selected
       background-position: center -46px
 
-  
+.player-description
+  ul 
+    margin-left: 20px
+    height: 158px
+    overflow: hidden
+  li
+    text-align: left
+    margin-top: 26px
+    display: none
 
 footer#footer
   background: black

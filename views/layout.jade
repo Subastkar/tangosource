@@ -21,7 +21,7 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand#title(href="/")
+          a.navbar-brand#title(href="http://tangosource.com")
             img(src="/images/game-logo.png")
 
         .navbar-collapse.navbar-ex8-collapse.collapse.col-md-6
@@ -33,6 +33,8 @@ html
             li
               a(href="/game") Game
             li
+              a(href="/credits") Credits
+            li
               iframe.votes(src="http://nodeknockout.com/iframe/tangosource", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
 
         .col-lg-2.pull-rigth.logo-tango
@@ -42,8 +44,12 @@ html
             img(src="/images/ts-logo.png")
 
       block content
+      #my-root-footer
 
 
     footer#footer
-      p ZombieInvasion / TangoSource / 2013
+      p 
+        | ZombieInvasion / 
+        a(href="http://tangosource.com") TangoSource 
+        | / 2013
     

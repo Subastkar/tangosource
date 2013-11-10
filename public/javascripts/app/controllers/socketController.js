@@ -14,6 +14,7 @@ ZombieWorld.Controller.socketController = {
     'send message'   : 'sendMessage',
     'kill game'      : 'killGame',
     'noabl'          : 'noabl'
+    // 'kick'           : 'kick'
   },
 
   init: function(){
@@ -173,6 +174,7 @@ ZombieWorld.Controller.socketController = {
   },
 
   newPos: function(position){
+    
     ZombieWorld.currentPlayer.x = position.x;
     ZombieWorld.currentPlayer.y = position.y;
     ZombieWorld.currentPlayer.Entity.x = position.x;
@@ -185,7 +187,7 @@ ZombieWorld.Controller.socketController = {
   },
 
   killGame: function(){
-    ZombieWorld.onError('Zombie Controller left... good bye');
+    ZombieWorld.onError('OOPS! Someone refreshed in the first level.  Please pardon our kludgy fix of resetting everyone.');
     localStorage.clear();
     window.location.assign('/');
   },
@@ -194,6 +196,16 @@ ZombieWorld.Controller.socketController = {
     ZombieWorld.onError('Room not avealable');
     localStorage.clear();
     window.location.assign('/');
-  }
+  },
+
+  // kick: function(id){
+  //   console.log(id);
+  //   var player = ZombieWorld.Players[id];
+  //   if(player){
+  //     alert(player.username + ' Left!');
+  //     ZombieWorld.Players[id].alive = false;
+  //     ZombieWorld.Players[id].Entity.destroy();
+  //   }
+  // }
 
 };

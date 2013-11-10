@@ -25,7 +25,9 @@ ZombieWorld.Controller.gameController = {
 
       Crafty.scene('Level1', generateLevel);
       Crafty.scene('Level2', generateLevel);
-      //Crafty.scene('Level3', generateLevel);
+      Crafty.scene('Level3', generateLevel);
+      Crafty.scene('Level4', generateLevel);
+      Crafty.scene('Level5', generateLevel);
       
       Crafty.scene('Victory', function(){
         Crafty.background("url('/images/victory.png')");
