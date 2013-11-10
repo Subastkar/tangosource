@@ -21,11 +21,13 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand#title(href="http://tangosource.com")
+          a.navbar-brand#title
             img(src="/images/game-logo.png")
 
         .navbar-collapse.navbar-ex8-collapse.collapse.col-md-6
           ul.nav.navbar-nav
+            li.twitter
+              a(href="https://twitter.com/share", class="twitter-share-button", data-url="http://tangosource.2013.nodeknockout.com/", data-text="I'm voting for Hackers vs. Zombies", data-via="tangosource") Tweet
             li
               a(href="/") Home
             li
@@ -49,7 +51,8 @@ html
 
     footer#footer
       p 
-        | ZombieInvasion / 
+        | Hackers vs Zombies / 
         a(href="http://tangosource.com") TangoSource 
         | / 2013
     
+    script(src='/javascripts/libs/twitter.js')
