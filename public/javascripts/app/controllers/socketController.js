@@ -138,7 +138,7 @@ ZombieWorld.Controller.socketController = {
     ZombieWorld.Players[data].Entity.destroy();
 
     var pending = _.find(ZombieWorld.Players, function(player){
-      return !player.waiting && player.player !== 'ZombieController'; // && !player.alive
+      return !player.waiting && player.player !== 'ZombieController' && player.alive;
     });
 
     if(!pending && ZombieWorld.currentPlayer.waiting){

@@ -4,16 +4,17 @@ ZombieWorld.Controller.playerController = {
 
     var user = JSON.parse(localStorage.getItem('user'));
 
-    if(user.player === 'ZombieController'){
-      user.waiting = true;
-      $('#img-trick').remove();
-    }
-
     if(!user){ 
       ZombieWorld.onError('First log in'); setTimeout(function(){
         window.location.assign('/login');
       }, 300);
     }else{
+
+      if(user.player === 'ZombieController'){
+        user.waiting = true;
+        $('#img-trick').remove();
+      }
+
       ZombieWorld.currentPlayer = user;
       this.loadPlayers();
     }
@@ -72,6 +73,11 @@ ZombieWorld.Controller.playerController = {
       this.y -= this._movement.y;
     }).onHit('Zombie', function(){
       this.destroy();
+      ZombieWorld.onError('You are dead');
+      localStorage.clear();
+      setTimeout(function(){
+        window.location.assign('/');
+      }, 100);
       this.emit('Kill player', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
     }).onHit('Exit', function(){
       ZombieWorld.currentPlayer.waiting = true;
@@ -79,7 +85,7 @@ ZombieWorld.Controller.playerController = {
       this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id, level: ZombieWorld.Level});
 
       var pending = _.find(ZombieWorld.Players, function(player){
-        return !player.waiting; // && !player.alive
+        return !player.waiting && player.alive;
       });
 
       if(!pending){
