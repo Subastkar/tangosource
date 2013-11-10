@@ -54,10 +54,11 @@ module.exports = {
           if(playerConf){
             user = _.pick(userUpdated, 'id', 'alive', 'player', 'username', 'waiting', 'x', 'y', 'level', 'roomID');
             _.extend(user, _.pick(playerConf, 'speed', 'gun'));
+
             manager.createZombies(user, function(err, roomUpdated){
-              room.players.push(user);
-              room.save();
-              res.send({user: user, room: room});
+              Room.update({id: room._d}, {$pull: {players: user}},{upsert:true}, function(err, usr){})
+              if(err){res.send(200, err);}
+              res.send({user: user, room: roomUpdated});
             });
           }else{
             room.players.push(userUpdated);
