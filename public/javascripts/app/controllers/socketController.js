@@ -105,6 +105,10 @@ ZombieWorld.Controller.socketController = {
 
               this.alpha = 1;
             });
+          } else {
+            Entity.bind('Click', function(e){
+              ZombieWorld.Controller.playerController.shoot(e);
+            });
           }
           ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
         }
