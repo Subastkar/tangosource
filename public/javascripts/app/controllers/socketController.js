@@ -159,7 +159,11 @@ ZombieWorld.Controller.socketController = {
 
       localStorage.setItem('room', JSON.stringify(ZombieWorld.room));
 
-      Crafty.scene('Level'+ZombieWorld.Level);
+      if(ZombieWorld.Level < 6){
+        Crafty.scene('Level'+ZombieWorld.Level);
+      } else {
+        Crafty.scene('Victory');
+      }
       ZombieWorld.Controller.playerController.loadPlayers();
       ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
     }
