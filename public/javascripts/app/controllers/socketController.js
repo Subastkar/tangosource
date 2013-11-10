@@ -92,13 +92,20 @@ ZombieWorld.Controller.socketController = {
 
           if(ZombieWorld.currentPlayer.player === 'ZombieController'){
             Entity.bind('Click', function(){
-              currentZombie = _.findWhere(ZombieWorld.Zombies, {Entity: this});
 
+              currentZombie = _.findWhere(ZombieWorld.Zombies, {Entity: this});
               ZombieWorld.currentZombie = currentZombie;
+
               _.each(ZombieWorld.Zombies, function(zombie){
-                zombie.Entity._alpha = 0.4;
+                zombie.Entity._alpha = 0.5;
               });
-              this._alpha = 1;
+
+              this.alpha = 1;
+              console.log(this);
+
+
+              console.log('currentZombie', currentZombie);
+
             });
           }
           ZombieWorld.Zombies[zombie._id] = {Entity: Entity, _id: zombie._id};
