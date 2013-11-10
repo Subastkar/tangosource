@@ -4,7 +4,7 @@ ZombieWorld.Entities.zombie = function(zombie){
       .attr({
         x: zombie.x,
         y: zombie.y,
-        alpha: 0.5
+        alpha: 1
       })
       .animate("walk_left",  0, 1, 3)
       .animate("walk_right", 0, 2, 3)
