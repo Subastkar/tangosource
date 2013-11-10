@@ -200,8 +200,20 @@ ZombieWorld.Controller.playerController = {
       }, 5)
       .onHit('Obstacle', function(){
         this.destroy();
-      })
-      .bind('TweenEnd', function(){
+      }).onHit('Zombie', function(e){
+        if(e[0].obj.__c.Zombie){
+          var zombie = e[0].obj;
+          zombie._life -= ZombieWorld.currentPlayer.gun.damage;
+
+          ZombieWorld.socket.emit('zombie injured', { 
+            damage: ZombieWorld.currentPlayer.gun.damage,
+            zombieID: zombie._id
+          });
+
+          if(zombie._life <= 0){ zombie.destroy(); }
+        }
+        this.destroy();
+      }).bind('TweenEnd', function(){
         this.destroy();
       });
     }
@@ -215,11 +227,9 @@ ZombieWorld.Controller.playerController = {
     Crafty.e('Bullet, Collision, Tween').attr(attrs).tween(data.end, 5)
     .onHit('Obstacle', function(){
       this.destroy();
-    })
-    .onHit('Zombie', function(){
+    }).onHit('Zombie', function(){
       this.destroy();
-    })
-    .bind('TweenEnd', function(){
+    }).bind('TweenEnd', function(){
       this.destroy();
     });
   }

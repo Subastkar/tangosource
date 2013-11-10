@@ -57,17 +57,16 @@ ZombieWorld.Controller.zombieController = {
         }
 
         this.removeComponent('Tween');
-      })
-      .onHit('Bullet', function(e){
-        console.log('hitting', e[0].obj);
-        //var zombie = e[0].obj
-        ////console.log(zombie._life);
-        //zombie.life -= ZombieWorld.currentPlayer.gun.damage;
-        this.destroy();
-      })
-      .bind('TweenEnd', function(){
+      }).bind('TweenEnd', function(){
         zombie.stop();
       });
+  },
+
+  hit: function(opts){
+    var Zombie  = ZombieWorld.Zombies[opts.zombieID];
+    Zombie.Entity._life -= opts.damage;
+
+    if(Zombie.Entity._life <= 0){ Zombie.Entity.destroy(); }
   }
 
 };

@@ -7,6 +7,7 @@ ZombieWorld.Controller.socketController = {
     'build zombies'  : 'buildZombies',
     'move zombie'    : 'moveZombie',
     'someone shotted': 'shot',
+    'kill zombie'    : 'killZombie',
     'Kill player'    : 'killPlayer',
     'Next Level'     : 'nextLevel',
     'new pos'        : 'newPos',
@@ -82,14 +83,13 @@ ZombieWorld.Controller.socketController = {
   },
 
   buildZombies: function(){
-    console.log('asdasd');
     $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id}).done(function(room){
       _.each(room.zombies, function(zombie){
-        console.log(ZombieWorld.Zombies);
         if(!ZombieWorld.Zombies[zombie._id]){
           var Entity = ZombieWorld.Entities.zombie(zombie);
-          //Entity._life  = zombie.life;
-          //Entity._speed = zombie.speed;
+          Entity._life  = zombie.life;
+          Entity._speed = zombie.speed;
+          Entity._id = zombie._id;
 
           var currentZombie;
 
@@ -118,6 +118,10 @@ ZombieWorld.Controller.socketController = {
 
   shot: function(data){
     ZombieWorld.Controller.playerController.drawShoot(data);
+  },
+
+  killZombie: function(data){
+    ZombieWorld.Controller.zombieController.hit(data);
   },
 
   killPlayer: function(player){
