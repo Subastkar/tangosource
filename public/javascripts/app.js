@@ -72,4 +72,12 @@ $(function(){
   setTimeout(function(){
     song.play();
   },0);
+
+  $('.play').click(function(){
+    if(song.paused){
+      song.play();
+    } else {
+      song.pause();
+    }
+  });
 });
