@@ -38,13 +38,13 @@ ZombieWorld.Controller.playerController = {
     .bind('NewDirection', function(data) {
       this.stop();
       if (data.x > 0) {
-        this.animate('walk_right', 20, -1);
+        this.animate('walk_right', 15, -1);
       } else if (data.x < 0) {
-        this.animate('walk_left',  20, -1);
+        this.animate('walk_left',  15, -1);
       } else if (data.y > 0) {
-        this.animate('walk_down',  20, -1);
+        this.animate('walk_down',  15, -1);
       } else if (data.y < 0) {
-        this.animate('walk_up',    20, -1);
+        this.animate('walk_up',    15, -1);
       } else {
         this.stop();
       }
