@@ -85,11 +85,9 @@ module.exports = {
 
     Room.findOne({_id: id}).exec(function(err, room){
 
-      if(room.level === level){ return res.send(room); }
+      if(parseInt(room.level, 10) === parseInt(level, 10)){ return res.send(room); }
 
       manager.createZombies({level: level}, function(zombies){
-        // room.zombies = [];
-        // room.save();
         room.zombies = zombies;
         room.save();
         res.send(room);
