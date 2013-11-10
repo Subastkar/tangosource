@@ -21,7 +21,7 @@ ZombieWorld.Controller.playerController = {
 
   isMyPlayer: function(){
 
-    var player = _.pick(ZombieWorld.currentPlayer, '_id', 'player', 'gun', 'speed', 'x', 'y');
+    var player = _.pick(ZombieWorld.currentPlayer, 'id', 'player', 'gun', 'speed', 'x', 'y', 'alive', 'waiting');
 
     ZombieWorld.socket.emit('register player', {
       room: ZombieWorld.room._id,
@@ -69,7 +69,11 @@ ZombieWorld.Controller.playerController = {
     }).onHit('Obstacle', function(){
       this.x -= this._movement.x;
       this.y -= this._movement.y;
+    }).onHit('Exit', function(){
+      // this.destroy();
+      this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
     });
+    
       
     
     ZombieWorld.currentPlayer.Entity = Entity;
@@ -146,7 +150,7 @@ ZombieWorld.Controller.playerController = {
       player.Entity = new ZombieWorld.Entities.player(player);
 
       //Extend Players
-      ZombieWorld.Players[player.id] = player;
+      ZombieWorld.Players[player.id || player._id] = player;
       
       
     }, this);

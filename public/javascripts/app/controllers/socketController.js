@@ -6,7 +6,8 @@ ZombieWorld.Controller.socketController = {
     'update zombies' : 'updateZombies',
     'build zombies'  : 'buildZombies',
     'move zombie'    : 'moveZombie',
-    'someone shotted': 'shot'
+    'someone shotted': 'shot',
+    'Next Level'     : 'nextLevel'
   },
 
   init: function(){
@@ -34,7 +35,7 @@ ZombieWorld.Controller.socketController = {
     player.Entity = new ZombieWorld.Entities.player(player);
 
     //Extend Players
-    ZombieWorld.Players[player.id] = player;
+    ZombieWorld.Players[player.id || player._id] = player;
 
   },
 
@@ -93,7 +94,7 @@ ZombieWorld.Controller.socketController = {
 
               ZombieWorld.currentZombie = currentZombie;
               _.each(ZombieWorld.Zombies, function(zombie){
-                zombie.Entity._alpha = .4;
+                zombie.Entity._alpha = 0.4;
               });
               this._alpha = 1;
             });
@@ -110,5 +111,9 @@ ZombieWorld.Controller.socketController = {
 
   shot: function(data){
     ZombieWorld.Controller.playerController.drawShoot(data);
+  },
+
+  nextLevel: function(data){
+    console.log(data);
   }
 };
