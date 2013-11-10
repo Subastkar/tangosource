@@ -158,6 +158,12 @@ ZombieWorld.Controller.playerController = {
       var shooter = Crafty(ZombieWorld.currentPlayer.player);
 
       ZombieWorld.currentPlayer.shoot = true;
+      ZombieWorld.socket.emit('shoot', { 
+        gun: ZombieWorld.currentPlayer.gun,
+        player: ZombieWorld.currentPlayer.player,
+        start: {x: shooter.x, y: shooter.y},
+        end: {x: e.realX, y: e.realY}
+      });
 
       setTimeout(function(){
         ZombieWorld.currentPlayer.shoot = false;
@@ -183,7 +189,23 @@ ZombieWorld.Controller.playerController = {
         this.destroy();
       });
     }
+  },
 
+  drawShoot: function(data){
+    Crafty.audio.play(data.player+'_shot');
+    var attrs = data.start;
+    attrs.w = 5;
+    attrs.h = 5;
+    Crafty.e('Bullet, Collision, Tween').attr(attrs).tween(data.end, 5)
+    .onHit('Obstacle', function(){
+      this.destroy();
+    })
+    .onHit('Zombie', function(){
+      // debugger;
+    })
+    .bind('TweenEnd', function(){
+      this.destroy();
+    });
   }
 
 };

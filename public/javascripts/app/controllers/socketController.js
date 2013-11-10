@@ -5,7 +5,8 @@ ZombieWorld.Controller.socketController = {
     'move'           : 'move',
     'update zombies' : 'updateZombies',
     'build zombies'  : 'buildZombies',
-    'move zombie'    : 'moveZombie'
+    'move zombie'    : 'moveZombie',
+    'someone shotted': 'shot'
   },
 
   init: function(){
@@ -98,5 +99,9 @@ ZombieWorld.Controller.socketController = {
 
   moveZombie: function(data){
     ZombieWorld.Controller.zombieController.move(data);
+  },
+
+  shot: function(data){
+    ZombieWorld.Controller.playerController.drawShoot(data);
   }
 };
