@@ -123,7 +123,7 @@ ZombieWorld.Controller.socketController = {
     ZombieWorld.Players[data].waiting = true;
 
     var pending = _.find(ZombieWorld.Players, function(player){
-      return !player.waiting; // && !player.dead
+      return !player.waiting; // && !player.alive
     });
 
     if(!pending){
