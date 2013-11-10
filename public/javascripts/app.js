@@ -6,6 +6,7 @@ var ZombieWorld = {
   Entities:    {},
   Components:  {},
   Players:     {},
+  Zombies:     {},
 
   Sprites: {
     player1: Crafty.sprite(40, "/images/player1.png", {
