@@ -15,9 +15,9 @@ ZombieWorld.Controller.zombieController = {
     var zombie = Zombie.Entity;
     var destiny = opts.destiny;
 
-    if(!zombie.__c.Tween){ zombie.addComponent('Tween'); }
+    if(zombie && !zombie.__c.Tween){ zombie.addComponent('Tween'); }
 
-    if(zombie.isPlaying()){ 
+    if(zombie && zombie.isPlaying()){ 
       zombie.stop();}
 
       var animation;

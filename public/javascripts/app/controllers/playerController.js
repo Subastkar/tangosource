@@ -69,6 +69,9 @@ ZombieWorld.Controller.playerController = {
     }).onHit('Obstacle', function(){
       this.x -= this._movement.x;
       this.y -= this._movement.y;
+    }).onHit('Zombie', function(){
+      this.destroy();
+      this.emit('Kill player', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});
     }).onHit('Exit', function(){
       this.destroy();
       this.emit('Next level', {player: ZombieWorld.currentPlayer.id, room: ZombieWorld.room._id});

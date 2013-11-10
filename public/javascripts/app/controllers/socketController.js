@@ -7,6 +7,7 @@ ZombieWorld.Controller.socketController = {
     'build zombies'  : 'buildZombies',
     'move zombie'    : 'moveZombie',
     'someone shotted': 'shot',
+    'Kill player'    : 'killPlayer',
     'Next Level'     : 'nextLevel'
   },
 
@@ -111,6 +112,11 @@ ZombieWorld.Controller.socketController = {
 
   shot: function(data){
     ZombieWorld.Controller.playerController.drawShoot(data);
+  },
+
+  killPlayer: function(player){
+    ZombieWorld.Players[player].alive = false;
+    ZombieWorld.Players[player].Entity.destroy();
   },
 
   nextLevel: function(data){
