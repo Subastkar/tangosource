@@ -173,10 +173,13 @@ ZombieWorld.Controller.socketController = {
   },
 
   newPos: function(position){
-    ZombieWorld.currentPlayer.x = position.x;
-    ZombieWorld.currentPlayer.y = position.y;
-    ZombieWorld.currentPlayer.Entity.x = position.x;
-    ZombieWorld.currentPlayer.Entity.y = position.y;
+    console.log('position', position);
+    //console.log('current', currentPlayer);
+    
+    //ZombieWorld.currentPlayer.x = position.x;
+    //ZombieWorld.currentPlayer.y = position.y;
+    //ZombieWorld.currentPlayer.Entity.x = position.x;
+    //ZombieWorld.currentPlayer.Entity.y = position.y;
 
   },
 

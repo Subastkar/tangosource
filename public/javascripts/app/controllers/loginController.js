@@ -4,10 +4,10 @@ $(function(){
     event.preventDefault();
     var user = {
       username: $('#username').val(),
-      player: $('input:radio[name="player"]:checked').val()
+      player: $('input:radio[name="player"]:checked').val() || 'player1'
     };
 
-    if(!user.username || !user.player){return alert('Please enter a username and pick a player');}
+    if(!user.username){return alert('Please enter a username');}
 
     $.ajax({
       method: 'POST',
