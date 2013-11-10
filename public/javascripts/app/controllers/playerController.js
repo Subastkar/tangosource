@@ -56,6 +56,16 @@ ZombieWorld.Controller.playerController = {
         } else if(this.isDown("DOWN_ARROW")) {
           this.emit('move', { to: "DOWN_ARROW",  player: player.id, x: this.x, y: this.y, room: ZombieWorld.room._id});
         }
+    }).bind('Move', function(from){
+        if(!ZombieWorld.fog){ return false; }
+
+        var pos = ZombieWorld.fog.offset();
+
+        var x = from._x - 985;
+        var y = from._y - 560;
+
+        ZombieWorld.fog.offset({ top: y, left: x});
+
     }).onHit('Obstacle', function(){
       this.x -= this._movement.x;
       this.y -= this._movement.y;
