@@ -119,6 +119,8 @@ ZombieWorld.Controller.playerController = {
           ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
         } else {
           Crafty.scene('Victory');
+          ZombieWorld.Controller.playerController.loadPlayers();
+          ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
         }
       }
       

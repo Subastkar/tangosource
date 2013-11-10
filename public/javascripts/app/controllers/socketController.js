@@ -84,7 +84,7 @@ ZombieWorld.Controller.socketController = {
 
   buildZombies: function(){
     ZombieWorld.level = ZombieWorld.level || 1;
-    $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id+'&level='+ZombieWorld.level}).done(function(room){
+    $.ajax({type: 'GET', url: 'room?id='+ZombieWorld.room._id+'&level='+ZombieWorld.level || 1}).done(function(room){
       _.each(room.zombies, function(zombie){
         if(!ZombieWorld.Zombies[zombie._id] && zombie.life > 0){
           var Entity = ZombieWorld.Entities.zombie(zombie);
@@ -168,6 +168,8 @@ ZombieWorld.Controller.socketController = {
         ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
       } else {
         Crafty.scene('Victory');
+        ZombieWorld.Controller.playerController.loadPlayers();
+        ZombieWorld.socket.emit('create zombies', {room: ZombieWorld.room._id});
       }
     }
 
