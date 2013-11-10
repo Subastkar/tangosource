@@ -190,7 +190,7 @@ ZombieWorld.Controller.playerController = {
         this.destroy();
       })
       .onHit('Zombie', function(){
-        // debugger;
+        this.destroy();
       })
       .bind('TweenEnd', function(){
         this.destroy();
@@ -208,7 +208,7 @@ ZombieWorld.Controller.playerController = {
       this.destroy();
     })
     .onHit('Zombie', function(){
-      // debugger;
+      this.destroy();
     })
     .bind('TweenEnd', function(){
       this.destroy();
